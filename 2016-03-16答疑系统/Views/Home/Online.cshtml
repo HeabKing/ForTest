@@ -1,0 +1,39 @@
+﻿@{
+    ViewBag.Title = "在线答疑";
+}
+<h3>@ViewBag.Message</h3>
+<style>
+	input, select, textarea {
+		max-width: none;
+	}
+</style>
+
+<form method="post" id="Form">
+	@if (Model.Id != 0)
+	{
+		<input type="text" class="form-control" readonly value="@Request.Headers.Get("host")/Home/Oline/@Model.Id" />
+	}
+
+	@*<div class="form-group">
+		<label asp-for="Title"></label>
+		<span asp-validation-for="Title" class="text-danger"></span>
+		<input type="text" class="form-control" placeholder="问卷标题" style="max-width: 300px" asp-for="Title" />
+	</div>*@
+	<input type="hidden" name="contentid" value="@Model.Id"/>
+	<div class="form-group">
+		<label asp-for="Input"></label>
+		<span asp-validation-for="Input" class="text-danger"></span>
+		<textarea data-val="true" asp-for="Input" readonly class="form-control" rows="20" placeholder='讨论的内容...'>@Model.Content</textarea>
+	</div>
+
+	<div class="form-group">
+		<textarea class="form-control" rows="4" placeholder="输入参与讨论..." name="mycontent"></textarea>
+	</div>
+
+	<div class="text-center">
+		<span class="text-center center-block">
+			<input type="submit" class="btn btn-primary" id="FaBuWenJuan" value="提交" />
+		</span>
+	</div>
+
+</form>

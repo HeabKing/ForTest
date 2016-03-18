@@ -1,0 +1,17 @@
+﻿
+@{
+    ViewBag.Title = "留言答疑";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<div class="list-group">
+	<a href="#" class="list-group-item disabled">
+		选择给谁留言
+	</a>
+	@foreach (var email in Model)
+	{
+		<a href="/Home/Online?to=@email" class="list-group-item">@email</a>
+	}
+	
+</div>

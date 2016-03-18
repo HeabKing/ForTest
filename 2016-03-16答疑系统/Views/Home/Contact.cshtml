@@ -1,0 +1,11 @@
+﻿@{
+    ViewBag.Title = "留言答疑";
+}
+<hr />
+<div class="list-group">
+	<a href="#" class="list-group-item active"> 留言列表 </a>
+	@foreach (var item in Model)
+	{
+		<a href="/Home/Online/@item.ContentId" class="list-group-item">与 @item.UserId 之间的交流</a>
+	}
+</div>
