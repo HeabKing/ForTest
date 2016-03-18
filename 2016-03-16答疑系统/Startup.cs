@@ -1,4 +1,5 @@
-﻿using System.Data.Common;
+﻿using System.Configuration;
+using System.Data.Common;
 using System.Data.SqlClient;
 using System.Web.Mvc;
 using Autofac;
@@ -18,8 +19,7 @@ namespace _2016_03_16答疑系统
 	        var builder = new ContainerBuilder();
 
 			// 注册数据库连接服务
-	        string connString =
-				"Data Source=.;Initial Catalog=DaYiXiTong;Integrated Security=true;";
+	        string connString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
 			builder.Register(c => new SqlConnection(connString)).As<DbConnection>();
 
 			// Register your MVC controllers. 可以直接在构造函数中进行注入

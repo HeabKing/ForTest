@@ -13,7 +13,7 @@ namespace _2016_03_16答疑系统.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201603180402224_InitialCreate"; }
+            get { return "201603180530223_InitialCreate"; }
         }
         
         string IMigrationMetadata.Source

@@ -35,10 +35,11 @@ namespace _2016_03_16答疑系统.Models
 			base.OnModelCreating(modelBuilder); // This needs to go before the other rules!
 
 			modelBuilder.Entity<IdentityUser>().ToTable("Z_Users");
-			modelBuilder.Entity<IdentityRole>().ToTable("Z_Roles");
-			modelBuilder.Entity<IdentityUserRole>().ToTable("Z_UserRoles");
-			modelBuilder.Entity<IdentityUserLogin>().ToTable("Z_UserLogins");
 			modelBuilder.Entity<IdentityUserClaim>().ToTable("Z_UserClaims");
+			modelBuilder.Entity<IdentityUserLogin>().ToTable("Z_UserLogins");
+			modelBuilder.Entity<IdentityUserRole>().ToTable("Z_UserRoles");
+			modelBuilder.Entity<IdentityRole>().ToTable("Z_Roles");
+			modelBuilder.Entity<ApplicationUser>().ToTable("Z_Users");
 		}
 	}
 }

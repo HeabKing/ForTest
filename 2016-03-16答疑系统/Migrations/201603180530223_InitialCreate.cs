@@ -47,6 +47,7 @@ namespace _2016_03_16答疑系统.Migrations
                         LockoutEnabled = c.Boolean(nullable: false),
                         AccessFailedCount = c.Int(nullable: false),
                         UserName = c.String(nullable: false, maxLength: 256),
+                        Discriminator = c.String(nullable: false, maxLength: 128),
                     })
                 .PrimaryKey(t => t.Id)
                 .Index(t => t.UserName, unique: true, name: "UserNameIndex");
@@ -78,33 +79,20 @@ namespace _2016_03_16答疑系统.Migrations
                 .ForeignKey("dbo.Z_Users", t => t.IdentityUser_Id)
                 .Index(t => t.IdentityUser_Id);
             
-            CreateTable(
-                "dbo.AspNetUsers",
-                c => new
-                    {
-                        Id = c.String(nullable: false, maxLength: 128),
-                    })
-                .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Z_Users", t => t.Id)
-                .Index(t => t.Id);
-            
         }
         
         public override void Down()
         {
-            DropForeignKey("dbo.AspNetUsers", "Id", "dbo.Z_Users");
             DropForeignKey("dbo.Z_UserRoles", "IdentityUser_Id", "dbo.Z_Users");
             DropForeignKey("dbo.Z_UserLogins", "IdentityUser_Id", "dbo.Z_Users");
             DropForeignKey("dbo.Z_UserClaims", "IdentityUser_Id", "dbo.Z_Users");
             DropForeignKey("dbo.Z_UserRoles", "RoleId", "dbo.Z_Roles");
-            DropIndex("dbo.AspNetUsers", new[] { "Id" });
             DropIndex("dbo.Z_UserLogins", new[] { "IdentityUser_Id" });
             DropIndex("dbo.Z_UserClaims", new[] { "IdentityUser_Id" });
             DropIndex("dbo.Z_Users", "UserNameIndex");
             DropIndex("dbo.Z_UserRoles", new[] { "IdentityUser_Id" });
             DropIndex("dbo.Z_UserRoles", new[] { "RoleId" });
             DropIndex("dbo.Z_Roles", "RoleNameIndex");
-            DropTable("dbo.AspNetUsers");
             DropTable("dbo.Z_UserLogins");
             DropTable("dbo.Z_UserClaims");
             DropTable("dbo.Z_Users");

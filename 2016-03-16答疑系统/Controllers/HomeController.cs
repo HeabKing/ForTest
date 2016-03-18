@@ -112,8 +112,8 @@ namespace _2016_03_16答疑系统.Controllers
 
 		public ActionResult LiuYan()
 		{
-			// 从数据库拿出所有用户
-			var emails = _conn.Query("SELECT Email FROM dbo.Z_Users").ToList();
+			// 从数据库拿出所有用户 - 除掉笨人
+			var emails = _conn.Query("SELECT Email FROM dbo.Z_Users").Where(m => m.Email != HttpContext.User.Identity.Name).ToList();
 			List<string> emaillist = emails.Select(m => (string)m.Email).ToList();
 			
 			return View(emaillist);
