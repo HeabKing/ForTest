@@ -11,6 +11,7 @@ using _2016_03_16答疑系统.ViewModel;
 
 namespace _2016_03_16答疑系统.Controllers
 {
+	[Authorize]
 	public class HomeController : Controller
 	{
 		private readonly DbConnection _conn;
@@ -18,6 +19,7 @@ namespace _2016_03_16答疑系统.Controllers
 		{
 			_conn = conn;
 		}
+		[AllowAnonymous]
 		public ActionResult Index()
 		{
 			return View();
