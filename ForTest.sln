@@ -11,6 +11,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "2016-03-16答疑系统", "2
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "2016-03-22LinqStudy", "2016-03-22LinqStudy\2016-03-22LinqStudy.csproj", "{282FA97F-4B41-4717-9AB5-2A024E921DC5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "2016-03-15DIStudy.Lib", "2016-03-15DIStudy.Lib\2016-03-15DIStudy.Lib.csproj", "{ED88B014-B3C1-4A27-9275-2F17285A1311}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "2016-03-23AsposeStudy", "Aspose\2016-03-23AsposeStudy.csproj", "{100D4F6F-185F-402C-96B3-AF33336A2D50}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +37,14 @@ Global
 		{282FA97F-4B41-4717-9AB5-2A024E921DC5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{282FA97F-4B41-4717-9AB5-2A024E921DC5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{282FA97F-4B41-4717-9AB5-2A024E921DC5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ED88B014-B3C1-4A27-9275-2F17285A1311}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ED88B014-B3C1-4A27-9275-2F17285A1311}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ED88B014-B3C1-4A27-9275-2F17285A1311}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ED88B014-B3C1-4A27-9275-2F17285A1311}.Release|Any CPU.Build.0 = Release|Any CPU
+		{100D4F6F-185F-402C-96B3-AF33336A2D50}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{100D4F6F-185F-402C-96B3-AF33336A2D50}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{100D4F6F-185F-402C-96B3-AF33336A2D50}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{100D4F6F-185F-402C-96B3-AF33336A2D50}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
