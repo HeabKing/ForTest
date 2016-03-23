@@ -1,0 +1,32 @@
+/****** Object:  其他数据库是CodeFirst自动生成的    Script Date: 2016/3/23 17:38:31 ******/
+/****** Object:  Table [dbo].[Z_Content]    Script Date: 2016/3/23 17:38:31 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Z_Content](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[Content] [nvarchar](max) NOT NULL,
+ CONSTRAINT [PK_Z_Content] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+
+GO
+/****** Object:  Table [dbo].[Z_LiuYan]    Script Date: 2016/3/23 17:38:31 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Z_LiuYan](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[UserId] [nvarchar](50) NOT NULL,
+	[ContentId] [int] NOT NULL,
+ CONSTRAINT [PK_Z_LiuYan] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
