@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "2016-03-15DIStudy.Lib", "20
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "2016-03-23AsposeStudy", "Aspose\2016-03-23AsposeStudy.csproj", "{100D4F6F-185F-402C-96B3-AF33336A2D50}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "2016-04-01HtmlAgilityPack", "2016-04-01HtmlAgilityPack\2016-04-01HtmlAgilityPack.csproj", "{7C9670C4-DEFF-4992-9280-AA933CA2FEFD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +47,10 @@ Global
 		{100D4F6F-185F-402C-96B3-AF33336A2D50}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{100D4F6F-185F-402C-96B3-AF33336A2D50}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{100D4F6F-185F-402C-96B3-AF33336A2D50}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7C9670C4-DEFF-4992-9280-AA933CA2FEFD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7C9670C4-DEFF-4992-9280-AA933CA2FEFD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7C9670C4-DEFF-4992-9280-AA933CA2FEFD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7C9670C4-DEFF-4992-9280-AA933CA2FEFD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
