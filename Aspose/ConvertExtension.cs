@@ -34,7 +34,7 @@ namespace Aspose
 			{
 				pathDst = System.IO.Path.GetDirectoryName(pathSrc) + @"\Formated\" + System.IO.Path.GetFileName(pathSrc) + ".html";
 			}
-			
+
 			switch (extfilename)
 			{
 				case ".doc":
@@ -61,6 +61,16 @@ namespace Aspose
 				case ".pdf":
 					var pdfSrc = new Pdf.Document(pathSrc);
 					pdfSrc.Save(pathDst, Pdf.SaveFormat.Html);
+					//pdfSrc.Save(pathDst, new Pdf.HtmlSaveOptions
+					//{
+					//	FixedLayout = true,
+					//	RasterImagesSavingMode = Pdf.HtmlSaveOptions.RasterImagesSavingModes.AsExternalPngFilesReferencedViaSvg,
+					//	FontSavingMode = Pdf.HtmlSaveOptions.FontSavingModes.SaveInAllFormats,
+					//	// Split HTML output into pages
+					//	SplitCssIntoPages = true,
+					//	// Split css into pages
+					//	SplitIntoPages = true
+					//});
 					break;
 				default:
 					throw new Exception("不支持的格式");

@@ -1,0 +1,31 @@
+﻿@model dynamic
+
+@{
+	ViewBag.Title = "title";
+}
+
+<script src="http://code.jquery.com/jquery.min.js"></script>
+<h2>
+	<a href="http://www.cnblogs.com/dowinning/archive/2012/04/19/json-jsonp-jquery.html">教程地址:</a>
+	<span>http://www.cnblogs.com/dowinning/archive/2012/04/19/json-jsonp-jquery.html</span>
+</h2>
+<hr />
+<script>
+	$(InvokeAjax);
+	function InvokeAjax() {
+		var data = { content: 123 };
+		$.ajax({
+			type: 'POST',
+			url: '/JSONP/AjaxRequest',   // 请求地址
+			data: JSON.stringify(data),
+			contentType: "application/json; charset=utf-8", // 数据类型 只有写成json后台才能有自动绑定
+			dataType: 'jsonp', // 返回数据类型
+			success: function (res) {
+				alert(res.Hello);
+			},
+			error: function (xmlHttpRequest, textStatus, errorThrown) {
+
+			}
+		});
+	}
+</script>

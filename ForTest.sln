@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "2016-03-23AsposeStudy", "As
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "2016-04-01HtmlAgilityPack", "2016-04-01HtmlAgilityPack\2016-04-01HtmlAgilityPack.csproj", "{7C9670C4-DEFF-4992-9280-AA933CA2FEFD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "2016-04-06 JSONP Study", "2016-04-06 JSONP Study\2016-04-06 JSONP Study.csproj", "{D747760F-070C-4FB7-A9AA-A76F9D0913E8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{7C9670C4-DEFF-4992-9280-AA933CA2FEFD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7C9670C4-DEFF-4992-9280-AA933CA2FEFD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7C9670C4-DEFF-4992-9280-AA933CA2FEFD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D747760F-070C-4FB7-A9AA-A76F9D0913E8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D747760F-070C-4FB7-A9AA-A76F9D0913E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D747760F-070C-4FB7-A9AA-A76F9D0913E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D747760F-070C-4FB7-A9AA-A76F9D0913E8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
