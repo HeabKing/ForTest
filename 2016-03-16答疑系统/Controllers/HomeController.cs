@@ -24,7 +24,7 @@ namespace _2016_03_16答疑系统.Controllers
 		{
 			return View();
 		}
-		
+
 		[HttpGet]
 		public ActionResult Online(int? id, string to = "")
 		{
@@ -40,24 +40,24 @@ namespace _2016_03_16答疑系统.Controllers
 
 		[HttpPost]
 		[Authorize]
-		public ActionResult Online(string mycontent, int contentid = 0,string to = "")
+		public ActionResult Online(string mycontent, int contentid = 0, string to = "", bool isonline = false)
 		{
 			ViewBag.Message = "在线答疑";
 
 			// 如果是留言
-			if (!string.IsNullOrWhiteSpace(to))
+			if (!string.IsNullOrWhiteSpace(to) && contentid == 0)
 			{
 				contentid = _conn.ExecuteScalar<int>(@"
-					INSERT INTO dbo.Z_Content (Content)
-					VALUES (@Content);
-					SELECT @@IDENTITY", new { Content = $"" });
+					INSERT INTO dbo.Z_Content (Content, IsOnline)
+					VALUES (@Content, @IsOnline);
+					SELECT @@IDENTITY", new { Content = $"", IsOnline = isonline });
 				_conn.Execute(@"
 					INSERT INTO [dbo].[Z_LiuYan]
 							   ([UserId]
 							   ,[ContentId])
 						 VALUES
 							   (@UserId
-							   ,@ContentId)", new {UserId = HttpContext.User.Identity.Name, ContentId = contentid});
+							   ,@ContentId)", new { UserId = HttpContext.User.Identity.Name, ContentId = contentid });
 				_conn.Execute(@"
 					INSERT INTO [dbo].[Z_LiuYan]
 							   ([UserId]
@@ -73,9 +73,9 @@ namespace _2016_03_16答疑系统.Controllers
 			if (contentid == 0)
 			{
 				contentid = _conn.ExecuteScalar<int>(@"
-					INSERT INTO dbo.Z_Content (Content)
-					VALUES (@Content);
-					SELECT @@IDENTITY", new { Content = $"{username} : {mycontent} \r\n" });
+					INSERT INTO dbo.Z_Content (Content, @IsOnline)
+					VALUES (@Content, @IsOnline);
+					SELECT @@IDENTITY", new { Content = $"{username} : {mycontent} \r\n", IsOnline = isonline });
 			}
 			else    // 如果指定id不为0, 则修改内容
 			{
@@ -91,7 +91,12 @@ namespace _2016_03_16答疑系统.Controllers
 			}
 
 			// 从指定id中获取数据, 展示出来
-			var result = _conn.Query<OnlineViewModel>("SELECT * FROM dbo.Z_Content WHERE Id = @Id", new {Id = contentid});
+			var result = _conn.Query<OnlineViewModel>("SELECT * FROM dbo.Z_Content WHERE Id = @Id", new { Id = contentid });
+
+			if (!string.IsNullOrWhiteSpace(Request["X-Requested-With"]))
+			{
+				return Json(new { contentid });
+			}
 
 			return View(result.FirstOrDefault());
 		}
@@ -107,17 +112,20 @@ namespace _2016_03_16答疑系统.Controllers
 					SELECT DISTINCT ContentId
 					FROM Z_LiuYan
 					WHERE UserId = @User
-				) AND UserId != @User", new {User = HttpContext.User.Identity.Name});
-			
-			return View(result);
+				) AND UserId != @User", new { User = HttpContext.User.Identity.Name });
+
+			// 将在线的去除
+			var r = _conn.Query("SELECT * FROM dbo.Z_Content WHERE IsOnline = 1");
+			var temp = result.Where(m => r.All(s => s.Id != m.ContentId));
+			return View(temp);
 		}
 
 		public ActionResult LiuYan()
 		{
-			// 从数据库拿出所有用户 - 除掉笨人
+			// 从数据库拿出所有用户 - 除掉本人
 			var emails = _conn.Query("SELECT Email FROM dbo.Z_Users").Where(m => m.Email != HttpContext.User.Identity.Name).ToList();
 			List<string> emaillist = emails.Select(m => (string)m.Email).ToList();
-			
+
 			return View(emaillist);
 		}
 

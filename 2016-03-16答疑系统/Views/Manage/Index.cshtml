@@ -23,11 +23,11 @@
             }
             ]
         </dd>
-        <dt>外部登录名:</dt>
+        @*<dt>外部登录名:</dt>
         <dd>
             @Model.Logins.Count [
             @Html.ActionLink("管理", "ManageLogins") ]
-        </dd>
+        </dd>*@
         @*
             电话号码可以在双因素身份验证系统中用作第二个验证因素。
              
@@ -56,12 +56,12 @@
                 }
             </dd>
         *@
-        <dt>双因素身份验证:</dt>
+        @*<dt>双因素身份验证:</dt>
         <dd>
             <p>
                 没有配置双因素身份验证提供程序。有关设置此 ASP.NET 应用程序
                 以支持双因素身份验证的详细信息，请参阅<a href="http://go.microsoft.com/fwlink/?LinkId=403804">此文</a>。
-            </p>
+            </p>*@
             @*@if (Model.TwoFactor)
                 {
                     using (Html.BeginForm("DisableTwoFactorAuthentication", "Manage", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))

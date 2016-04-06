@@ -1,0 +1,134 @@
+﻿@{
+	ViewBag.Title = "在线答疑";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<div class="list-group">
+	<a href="#" class="list-group-item disabled">
+		选择求助谁
+	</a>
+	@foreach (var email in Model)
+	{
+		<a class="list-group-item" data-toggle="modal" data-target="#myModal">
+			@email
+		</a>
+		@*<a href="/Home/Online?to=@email" class="list-group-item">@email</a>*@
+	}
+
+</div>
+
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLable" aria-hidden="true">
+	@*fade 过度效果*@
+	<div class="modal-dialog modal-lg">
+		@*modal-lg 在这里调整大小*@
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+				<h4 class="modal-title" id="myModalLabel">在线答疑</h4>
+			</div>
+			<div class="modal-body">
+
+				<form method="post" id="Form">
+					<div class="form-group">
+						<label asp-for="Input"></label>
+						<span asp-validation-for="Input" class="text-danger"></span>
+						<textarea data-val="true" id="content" style="max-width:none" asp-for="Input" readonly class="form-control" rows="20" placeholder='讨论的内容...'>@*@Model.Content*@</textarea>
+					</div>
+
+					<div class="form-group">
+						<textarea class="form-control" rows="4" style="max-width:none" placeholder="输入参与讨论..." id="mycontent"></textarea>
+					</div>
+
+					<div class="text-center">
+						<span class="text-center center-block">
+							<input type="button" class="btn btn-primary" id="SendMsg" value="发送" />
+						</span>
+					</div>
+
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+<script>
+	var personemail = "";
+	var contentidval = 0;
+	$(".list-group a").on("click", function() {
+		personemail = this.innerText;
+		$("#myModalLabel").text("在线请求 " + personemail + " 的帮助");
+	});
+	// 轮询更新聊天内容
+	$(function() {
+		setInterval("LunXun()", 500);
+	});
+
+	function LunXun() {
+		if (contentidval === 0) {
+			return;
+		}
+		var data = { contentid: contentidval };
+		$.ajax({
+			type: 'POST',
+			url: '/Online/GetContent', // 请求地址
+			data: JSON.stringify(data),
+			contentType: "application/json; charset=utf-8", // 数据类型 只有写成json后台才能有自动绑定
+			dataType: 'json', // 返回数据类型
+			success: function(res) {
+				$("#content").val(res.content);
+			},
+			error: function(xmlHttpRequest, textStatus, errorThrown) {
+				if (xmlHttpRequest.status === 401) {
+					alert("请先登录");
+					return;
+				}
+				alert(textStatus);
+			}
+		});
+
+	}
+
+	// 发送数据
+	$("#SendMsg").on("click", function() {
+		var mt = $("#mycontent").val().trim();
+		var data = { mycontent: mt, to: personemail, contentid: contentidval, isonline: true };
+		$.ajax({
+			type: 'POST',
+			url: '/Home/Online', // 请求地址
+			data: JSON.stringify(data),
+			contentType: "application/json; charset=utf-8", // 数据类型 只有写成json后台才能有自动绑定
+			dataType: 'json', // 返回数据类型
+			success: function(res) {
+				contentidval = res.contentid;
+				$("#mycontent").val("");
+			},
+			error: function(xmlHttpRequest, textStatus, errorThrown) {
+				if (xmlHttpRequest.status === 401) {
+					alert("请先登录");
+					return;
+				}
+				alert(textStatus);
+			}
+		});
+	});
+	// 关闭窗口以后初始化contentidval
+	$(function() {
+		$('#myModal').on('hidden.bs.modal', function(e) {
+			contentidval = 0; // 清除当前选中contentidval
+			$("#content").val(""); // 清除聊天内容
+		});
+	});
+</script>
+
+<script>
+	$(function() {
+		var temp = window.location.href.split("=");
+		if (temp.length > 1) {
+			contentidval = temp[1];
+			$('#myModal').modal({show:true});
+		}
+	});
+</script>

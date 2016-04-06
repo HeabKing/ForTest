@@ -8,6 +8,9 @@
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 
+	@Scripts.Render("~/bundles/jquery")
+	@Scripts.Render("~/bundles/bootstrap")
+	@RenderSection("scripts", required: false)
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -23,7 +26,7 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("主页", "Index", "Home")</li>
-                    <li><a href="/Home/Online">在线答疑</a></li>
+                    <li><a href="/Online/ChoicePerson">在线答疑</a></li>
 	                <li>@Html.ActionLink("留言答疑", "Contact", "Home")</li>
 					<li>@Html.ActionLink("我要留言", "LiuYan", "Home")</li>
                 </ul>
@@ -38,9 +41,27 @@
             <p>&copy; @DateTime.Now.Year - 王星宇的毕业设计</p>
         </footer>
     </div>
+<script>
+	$(function() {
+		setInterval("HasMsg()", 1000);
+	});
+	function HasMsg() {
+		var data = {};
+		$.ajax({
+			type: 'POST',
+			url: '/Online/HasChat',   // 请求地址
+			data: JSON.stringify(data),
+			contentType: "application/json; charset=utf-8", // 数据类型 只有写成json后台才能有自动绑定
+			dataType: 'json', // 返回数据类型
+			success: function (res) {
+				alert("您有一条新短消息");
+				window.location.href = "/Online/ChoicePerson?contentid=" + res[0].Value;
+			},
+			error: function (xmlHttpRequest, textStatus, errorThrown) {
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)
+			}
+		});
+	}
+</script>
 </body>
 </html>
