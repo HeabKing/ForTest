@@ -22,28 +22,13 @@ namespace ForTest
 	{
 		public static void Main()
 		{
-			Thread thread = new Thread(Run);
-			thread.SetApartmentState(ApartmentState.STA);
-			thread.Start();
-		}
-
-		public static void Run()
-		{
-			WebBrowser web = new WebBrowser { Url = new Uri("http://www.baidu.com") };
-			web.DocumentCompleted += Web_DocumentCompleted;
-		}
-
-		private static void Web_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
-		{
-			var web = sender as WebBrowser;
-			if (web?.ReadyState != WebBrowserReadyState.Complete) { return; }
-			if (web.Document == null) return;
-			foreach (var item in web.Document.Links)
-			{
-				Console.WriteLine(item);
-			}
+			HttpClient client = new HttpClient();
+			var resulttast = client.GetStringAsync("http://localhost:13573/api/xk.mobile.user.get?userid=34568");
+			string result = resulttast.Result;
+			
 		}
 	}
+
 
 	#region 2016-03-16 DI
 	//public class Program

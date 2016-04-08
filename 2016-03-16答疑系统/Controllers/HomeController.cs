@@ -93,7 +93,7 @@ namespace _2016_03_16答疑系统.Controllers
 			// 从指定id中获取数据, 展示出来
 			var result = _conn.Query<OnlineViewModel>("SELECT * FROM dbo.Z_Content WHERE Id = @Id", new { Id = contentid });
 
-			if (!string.IsNullOrWhiteSpace(Request["X-Requested-With"]))
+			if (!string.IsNullOrWhiteSpace(Request.Headers.Get("X-Requested-With")))
 			{
 				return Json(new { contentid });
 			}

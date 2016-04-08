@@ -31,17 +31,17 @@ namespace _2016_03_16答疑系统.Controllers
 		public async Task<ActionResult> HasChat()
 		{
 			var result = await _conn.QueryAsync(@"
-				-- 拿一分钟之内的数据
+				-- 拿23小时之内的数据
 				SELECT * 
 				FROM dbo.Z_Content 
 				WHERE (GETDATE() - CreateTime) 
-					< '1900-01-01 00:01:00'
-					AND IsOnline");
+					< '1900-01-01 23:01:00'
+					AND IsOnline=1");
 			var enumerable = result as dynamic[] ?? result.ToArray();
 			if (!enumerable.Any()) return new HttpStatusCodeResult(HttpStatusCode.NotFound);
 			var task = _conn.ExecuteAsync(@"
 					UPDATE [dbo].[Z_Content]
-						SET [CreateTime] = (GETDATE() - '00:01:01')
+						SET [CreateTime] = '2000-01-01 00:00:00'--(GETDATE() - '00:01:01')
 					WHERE Id = @Id", new { enumerable.First().Id });
 			return Json(enumerable.FirstOrDefault());
 		}
