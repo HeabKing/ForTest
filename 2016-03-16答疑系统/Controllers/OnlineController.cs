@@ -32,13 +32,29 @@ namespace _2016_03_16答疑系统.Controllers
 		{
 			var result = await _conn.QueryAsync(@"
 				-- 拿23小时之内的数据
-				SELECT * 
-				FROM dbo.Z_Content 
-				WHERE (GETDATE() - CreateTime) 
-					< '1900-01-01 23:01:00'
-					AND IsOnline=1");
+				SELECT * FROM 
+					(
+					SELECT * 
+					FROM dbo.Z_Content 
+					WHERE (GETDATE() - CreateTime) 
+						< '1900-01-01 23:01:00'
+						AND IsOnline=1
+					) T
+				WHERE T.Id IN (SELECT ContentId FROM dbo.Z_LiuYan WHERE UserId = @Email)", new { Email = User.Identity.Name });
+
+
+
 			var enumerable = result as dynamic[] ?? result.ToArray();
+
+
 			if (!enumerable.Any()) return new HttpStatusCodeResult(HttpStatusCode.NotFound);
+			// 如果是发送方, 这个rr就会有数据
+			var rr = await _conn.QueryAsync("SELECT * FROM dbo.Z_LiuYan WHERE Id = ((SELECT Id FROM dbo.Z_LiuYan WHERE ContentId = @ContentId AND UserId = @Email) + 1)", new { ContentId = enumerable.First().Id, Email = User.Identity.Name });
+			if (rr.Any())
+			{
+				return new HttpStatusCodeResult(HttpStatusCode.NotFound);
+			}
+
 			var task = _conn.ExecuteAsync(@"
 					UPDATE [dbo].[Z_Content]
 						SET [CreateTime] = '2000-01-01 00:00:00'--(GETDATE() - '00:01:01')
