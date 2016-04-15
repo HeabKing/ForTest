@@ -19,6 +19,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "2016-04-01HtmlAgilityPack",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "2016-04-06 JSONP Study", "2016-04-06 JSONP Study\2016-04-06 JSONP Study.csproj", "{D747760F-070C-4FB7-A9AA-A76F9D0913E8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "2016-04-08 异步Task学习", "2016-04-08 异步Task学习\2016-04-08 异步Task学习.csproj", "{9C7FFC9C-68A7-4C58-866D-0A007DFA9324}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "2016-04-11 学科网M站重写测试站点", "2016-04-11 学科网M站重写测试站点\2016-04-11 学科网M站重写测试站点.csproj", "{3A0A52CE-D0E1-49F3-BF3E-A689A84687CB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -57,6 +61,14 @@ Global
 		{D747760F-070C-4FB7-A9AA-A76F9D0913E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D747760F-070C-4FB7-A9AA-A76F9D0913E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D747760F-070C-4FB7-A9AA-A76F9D0913E8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9C7FFC9C-68A7-4C58-866D-0A007DFA9324}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9C7FFC9C-68A7-4C58-866D-0A007DFA9324}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9C7FFC9C-68A7-4C58-866D-0A007DFA9324}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9C7FFC9C-68A7-4C58-866D-0A007DFA9324}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3A0A52CE-D0E1-49F3-BF3E-A689A84687CB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3A0A52CE-D0E1-49F3-BF3E-A689A84687CB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3A0A52CE-D0E1-49F3-BF3E-A689A84687CB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3A0A52CE-D0E1-49F3-BF3E-A689A84687CB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

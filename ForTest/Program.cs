@@ -1,20 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.SqlClient;
-using System.Diagnostics;
-using System.Globalization;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
-using System.Net.Mail;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using Autofac;
-using Autofac.Core;
-using Dapper;
+﻿using System.Net.Http;
 
 namespace ForTest
 {
@@ -22,15 +6,14 @@ namespace ForTest
 	{
 		public static void Main()
 		{
-			HttpClient client = new HttpClient();
+			var client = new HttpClient();
 			var resulttast = client.GetStringAsync("http://localhost:13573/api/xk.mobile.user.get?userid=34568");
-			string result = resulttast.Result;
-			
+			var result = resulttast.Result;
 		}
 	}
 
-
 	#region 2016-03-16 DI
+
 	//public class Program
 	//{
 	//	interface IOutput
@@ -85,9 +68,11 @@ namespace ForTest
 	//	}
 
 	//} 
+
 	#endregion
 
 	#region 2016-03-15 Dapper
+
 	//public class Program
 	//{
 	//	public static void Main()
@@ -102,9 +87,11 @@ namespace ForTest
 	//		}
 	//	}
 	//} 
+
 	#endregion
 
 	#region 2016-03-15 DI
+
 	//public class Program
 	//{
 	//	public interface IOutPut
@@ -141,7 +128,6 @@ namespace ForTest
 	//		console.Write("Hello World");
 	//	}
 	//} 
+
 	#endregion
-
 }
-

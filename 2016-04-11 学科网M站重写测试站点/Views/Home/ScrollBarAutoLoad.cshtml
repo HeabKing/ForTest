@@ -1,0 +1,27 @@
+﻿
+@{
+	ViewBag.Title = "ScrollBarAutoLoad";
+}
+
+<h2>ScrollBarAutoLoad</h2>
+
+<div Id="SliderContainer">
+	<a href="/soft/4724145.html" title="工作记录4资料初审设为推荐" class="no-line" data-ajax="false" data-signnum="3">
+		<div class="bot-bt pad2 gm-list of-x">
+			<p class="of-x">工作记录4资料初审设为推荐</p>
+			<p class="sm-gy"><span>关键字：推荐,推荐</span></p>
+			<p class="sm-gy"><span>下载:0次</span><span class="mid">免费</span><span>发布日期：2016.4.14</span></p>
+		</div>
+	</a>
+	<button id="SliderLoadMore">加载更多...</button>
+</div>
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/HeabSplider.js"></script>
+<script>
+	Splider.Url = "/Home/ScrollBarAutoLoadPartial";	// 后台地址
+	Splider.SuccessTimes = 1;	// 自动增长的字段
+	Splider.Data = { PageIndex: Splider.SuccessTimes };	// 第一次传入后台的数据
+	Splider.OnSuccess = function(pageIndex) {
+		Splider.Data = { PageIndex: pageIndex };		// 以后传入后台的数据
+	}
+</script>

@@ -1,0 +1,67 @@
+﻿
+@{
+    ViewBag.Title = "SoftFavorite";
+}
+
+<h2>SoftFavorite</h2>
+<a onclick="addFavoriteSave(null, '[中学联盟]黑龙江省哈尔滨市万邦中学校语文(人教版)必修一：3《大堰河-我的保姆》教案（2份） 人教版-人教新课标', 'http://yw.zxxk.com/s5188215.html', '我是备注', false);"><i></i>加入收藏</a>
+
+<script>
+	//添加收藏 title 标题, url 地址, remark 备注, ispublic 共享/私有
+	function addFavoriteSave(th, title, url, remark, ispublic) {
+
+		// 判断是否登录
+		// 注意, 这里即使不是zxxk及其子域[才]能加入收藏
+		var oCookie = getCookie("Aspoo");
+		if (oCookie == null || oCookie === "") {
+			alert("请先登录");
+			return;
+		}
+		var arrS = oCookie.split("&");
+		var arrId = arrS[0].split("=");
+		var arrPass = arrS[1].split("=");
+		if (parseInt(arrId[1]) < 1 || arrPass[1] === "") {
+			alert("请先登录");
+			return;
+		}
+
+		// 异步提交收藏
+		var postdata = "action=api&Title=" + escape(title) + "&Url=" + escape(url) + "&Remark=" + escape(remark) + "&IsPublic=" + ispublic + "&t=" + Math.random();
+		$.ajax({
+			type: 'get',
+			url: 'http://user.zxxk.com/MainFUNC/MyFavorite.aspx',
+			dataType: "jsonp",
+			jsonp: "callback",
+			data: postdata,
+			success: function (data) {
+				if (data.msg === "ok") {
+					alert("收藏成功");
+				} else {
+					alert(data.msg);
+				}
+			}, error: function () {
+				alert("服务器开小差了");
+			}
+		});
+	}
+
+	// 获取Cookies
+	function getCookie(name) {
+		var search = name + "=";
+		var returnvalue = "";
+		if (document.cookie.length > 0) {
+			var offset = document.cookie.indexOf(search);
+			if (offset !== -1) { // if cookie exists
+				offset += search.length;
+				// set index of beginning of value
+				var end = document.cookie.indexOf(";", offset);
+				// set index of end of cookie value
+				if (end === -1)
+				{ end = document.cookie.length; }
+				returnvalue = unescape(document.cookie.substring(offset, end));
+			}
+		}
+		//return returnvalue;
+		return "Aspoo=UserID=23264097&UserPassword=d676923a50ba668fe4f2d93b4949f0ca&UserGroupID=4&UserName=HeabKing"; // Debug
+	}
+</script>

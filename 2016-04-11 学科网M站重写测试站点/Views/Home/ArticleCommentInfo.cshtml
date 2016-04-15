@@ -1,0 +1,25 @@
+﻿
+@{
+	ViewBag.Title = "ArticleCommentInfo";
+}
+
+<h2>ArticleCommentInfo</h2>
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<!--评论js加载开始，一个页面只需要加载一次-->
+<div class="pl-mod" id="commentroot"></div>
+<script type="text/javascript">
+	var comment_sourceid = 1; //平台1代表WEB平台// TODO 这里是不是var comment_platform = 1;
+	var comment_pagetype = 2; //页面类型  1：评论列表页，2：评论详情页，3：我的评论
+	var comment_userid = 23264097;		//用户ID
+	var comment_username = "HeabKing";	//用户名
+	var comment_infoid = 1;			// 资讯Id(显示资讯所有Id使用)
+	var comment_commentid = 1134;	// 评论的id
+	var templete_type = 1;
+	(function () {
+		var pl = document.createElement('script');
+		pl.type = 'text/javascript'; pl.async = true;
+		pl.src = 'http://api.comment.zxxk.com/Web/Js/comment_moblie.js?8e726e3b60bcdee0a817bfc07787103c';
+		pl.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(pl);
+	})();
+</script>

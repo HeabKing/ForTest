@@ -1,0 +1,29 @@
+﻿@{
+	ViewBag.Title = "AppraiseArticle";
+}
+<hr />
+<div class="share">
+	<!-- 百度喜欢: 1. localhost没有数量统计 2. 根据的是url静态化统计 3. div:.bdlikebutton-inner是可以删除的 -->
+	<div class="share_left">
+		<!-- 将此标记放在您希望显示like按钮的位置 -->
+		<div class="bdlikebutton">
+			@*<div class="bdlikebutton-inner">
+				<span class="bdlikebutton-add">+1</span>
+				<div class="bdlikebutton-count">0</div>
+				<div class="bdlikebutton-text">该内容对我有帮助</div>
+			</div>*@
+		</div>
+		<!-- 将此代码放在适当的位置，建议在body结束前 -->
+		<script id="bdlike_shell"></script>
+		<script>
+			var bdShare_config = {
+				"type": "small",
+				"color": "blue",
+				"uid": "6706664",
+				"likeText": "顶我",
+				"likedText": "您已顶过"
+			};
+			document.getElementById("bdlike_shell").src = "http://bdimg.share.baidu.com/static/js/like_shell.js?t=" + Math.ceil(new Date() / 3600000);
+		</script>
+	</div>
+</div>

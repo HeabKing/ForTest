@@ -1,0 +1,30 @@
+﻿
+@{
+	ViewBag.Title = "SoftComment";
+}
+
+<h2>SoftComment</h2>
+
+<!--评论js加载开始，一个页面只需要加载一次-->
+<div class="pl-mod" id="commentroot"></div>
+<script type="text/javascript">
+	var comment_platform = 1;
+	var comment_sourceid = 1;
+	var comment_pagetype = 1;
+	var comment_userid = 23264097;
+	var comment_username = "HeabKing";
+	var comment_infoid = 5189223;
+	var comment_commentid = 0;
+	var templete_type = 1;
+
+	var is_comment = true;	// 只有用户下载以后这个才为true
+	var comment_msg = "资料需要下载之后才能评论呦~下载后请刷新!";
+	(function () {
+		var pl = document.createElement('script');
+		pl.type = 'text/javascript'; pl.async = true;
+		pl.src = 'http://api.comment.zxxk.com/Web/Js/comment_moblie.js?8e726e3b60bcdee0a817bfc07787103c';
+		pl.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(pl);
+	})();
+</script>
+<!--评论js加载结束，一个页面只需要加载一次 --> 

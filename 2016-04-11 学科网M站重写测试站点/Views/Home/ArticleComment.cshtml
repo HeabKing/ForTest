@@ -1,0 +1,40 @@
+﻿
+@{
+	ViewBag.Title = "ArticleComment";
+}
+
+<h2>ArticleComment</h2>
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<!--评论js加载开始，一个页面只需要加载一次 TODO : 生成的[查看详情] 对http://m.zxxk.com/comment/commentinfo?commentid=1132的跳转-->
+<div class="pl-mod" id="commentroot"></div>
+<script type="text/javascript">
+	var comment_platform = 1; // 平台1代表WEB平台
+	var comment_sourceid = 2;
+	var comment_pagetype = 1; // 页面类型  1：评论列表页，2：评论详情页，3：我的评论
+	var comment_userid = 23264097; // 用户ID
+	var comment_username = "HeabKing"; // 用户名
+	var comment_infoid = 494437; // 资讯Id
+	var comment_commentid = 0; // 评论的Id(显示评论详情使用)
+	var templete_type = 1;
+	var comment_host = "@Request.Headers.Get("Host")";
+	//(function () {
+	//	var pl = document.createElement('script');
+	//	pl.type = 'text/javascript';
+	//	pl.async = true;
+	//	pl.src = 'http://api.comment.zxxk.com/Web/Js/comment_moblie.js?8e726e3b60bcdee0a817bfc07787103c';
+	//	pl.charset = 'UTF-8';
+	//	(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(pl);
+	//})();
+</script>
+<script src="~/Scripts/comment_moblie.js"></script>
+<script>
+	@*$(function () {
+		var ele = $(".comment-ck-btn");
+		var href = ele.attr("href");
+		if (href) {
+			var newPartHref = href.split("/")[href.split("/").length - 1];
+			ele.attr("href", "http://" + '@Request.Headers.Get("Host")' + "/" + newPartHref);
+		}
+	});*@
+</script>
+<!--评论js加载结束，一个页面只需要加载一次 --> 
