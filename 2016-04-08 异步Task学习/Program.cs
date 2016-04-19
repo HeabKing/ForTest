@@ -10,7 +10,7 @@ namespace _2016_04_08_异步Task学习
 {
 	class Program
 	{
-		static void Main(string[] args)
+		static void Main1(string[] args)
 		{
 			// 异步死锁 - 这里不会导致死锁, 因为当前上下文可以运行多个线程
 			DeadBlock();
