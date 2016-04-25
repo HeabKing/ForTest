@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.24720.0
+VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ForTest", "ForTest\ForTest.csproj", "{98E177BC-391E-4848-9038-2B0136FB5EB4}"
 EndProject
@@ -24,6 +24,10 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "2016-04-11 学科网M站重写测试站点", "2016-04-11 学科网M站重写测试站点\2016-04-11 学科网M站重写测试站点.csproj", "{3A0A52CE-D0E1-49F3-BF3E-A689A84687CB}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "2016-04-17 EmitMapperStudy", "2016-04-17 EmitMapperStudy\2016-04-17 EmitMapperStudy.csproj", "{6E00F436-BF02-444E-83C1-3968CE262B06}"
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "2016-04-20 延迟加载", "2016-04-20 延迟加载\2016-04-20 延迟加载.xproj", "{8FEFB7B4-79EA-4D82-9230-073487F91AAE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "2016-04-21 System.Runtime.Caching Study", "2016-04-21 System.Runtime.Caching Study\2016-04-21 System.Runtime.Caching Study.csproj", "{C05E5775-2A88-47ED-8A6C-83B536CB80DF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -75,6 +79,14 @@ Global
 		{6E00F436-BF02-444E-83C1-3968CE262B06}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6E00F436-BF02-444E-83C1-3968CE262B06}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6E00F436-BF02-444E-83C1-3968CE262B06}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8FEFB7B4-79EA-4D82-9230-073487F91AAE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8FEFB7B4-79EA-4D82-9230-073487F91AAE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8FEFB7B4-79EA-4D82-9230-073487F91AAE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8FEFB7B4-79EA-4D82-9230-073487F91AAE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C05E5775-2A88-47ED-8A6C-83B536CB80DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C05E5775-2A88-47ED-8A6C-83B536CB80DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C05E5775-2A88-47ED-8A6C-83B536CB80DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C05E5775-2A88-47ED-8A6C-83B536CB80DF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
