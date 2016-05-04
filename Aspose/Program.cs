@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using Aspose;
@@ -12,9 +13,11 @@ namespace Aspose
 	{
 		static void Main(string[] args)
 		{
-			var target = @"C:\Users\HeabKing\Desktop\soft".ConvertToHtmls(null, OfficeAndPdfConvertToHtmlExtension.ConvertModel.SingleDir);
+			var target = System.IO.Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location).ConvertToHtmls(null, OfficeAndPdfConvertToHtmlExtension.ConvertModel.SingleDir);
 			Process.Start("explorer.exe", target);
-			GetAllFiles(target).ForEach(m => System.Diagnostics.Process.Start("chrome.EXE", m));
+			GetAllFiles(target).ForEach(m => Process.Start("chrome.EXE", m));
+			Console.WriteLine("任意键关闭");
+			Console.ReadKey();
 		}
 		private static List<string> GetAllFiles(string directory)
 		{

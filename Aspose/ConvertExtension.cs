@@ -92,7 +92,7 @@ namespace Aspose
 		{
 			if (!System.IO.Directory.Exists(dirSrc))
 			{
-				throw new Exception("指定目录不存在");
+				throw new Exception($"指定目录 {dirSrc} 不存在");
 			}
 			var files = model == ConvertModel.SingleDir ? System.IO.Directory.GetFiles(dirSrc).ToList() : GetAllFiles(dirSrc);
 			Parallel.ForEach(files, file =>
@@ -100,10 +100,11 @@ namespace Aspose
 				try
 				{
 					dirDst = file.ConvertToHtml();
+					Console.WriteLine($"info: 转换 {file} 成功!");
 				}
 				catch (Exception ex)
 				{
-					Debug.WriteLine(file + ex.Message);
+					Console.WriteLine("warning: " + file + ex.Message);
 				}
 			});
 			return model == ConvertModel.SingleDir ? System.IO.Path.GetDirectoryName(dirDst) : dirSrc;
