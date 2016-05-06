@@ -11,7 +11,7 @@ namespace _2016_03_15DIStudy.Console
 	/// </summary>
 	class Program
 	{
-		static void Main(string[] args)
+		static void Main1(string[] args)
 		{
 
 		}
