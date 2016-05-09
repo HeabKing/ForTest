@@ -8,9 +8,18 @@ using _2016_05_06_LayeredMvcDemo.Domain.Models;
 
 namespace _2016_05_06_LayeredMvcDemo.Application.Models
 {
-	public class CustomerServices
+	public class CustomerService : ICustomerService
 	{
-		private readonly CustomerRepository _repository = new CustomerRepository();
+		private readonly ICustomerRepository _repository;
+
+		/// <summary>
+		/// 使用构造函数注入使得Service不依赖特定的Repository实现类型
+		/// </summary>
+		/// <param name="repository"></param>
+		public CustomerService(ICustomerRepository repository)
+		{
+			_repository = repository;
+		}
 
 		public Customer GetCustomerById(int id)
 		{

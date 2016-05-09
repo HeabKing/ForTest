@@ -10,7 +10,7 @@ namespace _2016_05_06_LayeredMvcDemo.DataAccess
 	/// <summary>
 	/// 提供Customer的数据存取操作
 	/// </summary>
-	public class CustomerRepository
+	public class CustomerRepository : ICustomerRepository
 	{
 		private readonly SouthwindContext _db = new SouthwindContext();
 

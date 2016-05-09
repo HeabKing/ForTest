@@ -50,6 +50,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CustomerRepository.cs" />
+    <Compile Include="ICustomerRepository.cs" />
     <Compile Include="SouthwindContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

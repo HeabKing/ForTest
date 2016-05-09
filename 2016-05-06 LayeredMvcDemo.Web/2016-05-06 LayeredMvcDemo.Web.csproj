@@ -149,6 +149,7 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Start\ControllerConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Global.asax.cs">
@@ -181,6 +182,10 @@
     <ProjectReference Include="..\2016-05-06 LayeredMvcDemo.Application\2016-05-06 LayeredMvcDemo.Application.csproj">
       <Project>{1102f3cf-b878-4b05-9c04-775c3cf297a9}</Project>
       <Name>2016-05-06 LayeredMvcDemo.Application</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\2016-05-06 LayeredMvcDemo.DataAccess\2016-05-06 LayeredMvcDemo.DataAccess.csproj">
+      <Project>{fcf2dedd-58a5-48f3-834a-5f8072916c95}</Project>
+      <Name>2016-05-06 LayeredMvcDemo.DataAccess</Name>
     </ProjectReference>
     <ProjectReference Include="..\2016-05-06 LayeredMvcDemo.Domain\2016-05-06 LayeredMvcDemo.Domain.csproj">
       <Project>{3aa8e781-0f81-427a-941f-f422c720f252}</Project>
