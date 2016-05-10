@@ -16,10 +16,14 @@ namespace _2016_05_06_LayeredMvcDemo.Web
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
 
-			// 把MVC框架的默认controller factory换掉
-	        var ctrlFactory = new MyControllerFactory();
-			// MVC构造函数的注入
-	        ControllerBuilder.Current.SetControllerFactory(ctrlFactory);
+			//// 把MVC框架的默认controller factory换掉
+	  //      var ctrlFactory = new MyControllerFactory();
+			//// MVC构造函数的注入
+	  //      ControllerBuilder.Current.SetControllerFactory(ctrlFactory);
+
+			// 设定Mvc引用程序的全局dependency resolver对象
+	        var myResolver = new MyDependencyResolver();
+	        DependencyResolver.SetResolver(myResolver);
         }
 		/// <summary>
 		/// 在每一次Http请求开始时建立一个新的SouthwindContext对象, 并保存到当前HttpContext对象的Items集合属性中
