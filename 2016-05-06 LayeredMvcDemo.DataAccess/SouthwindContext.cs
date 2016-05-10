@@ -4,6 +4,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 using _2016_05_06_LayeredMvcDemo.Domain.Models;
 
 namespace _2016_05_06_LayeredMvcDemo.DataAccess
@@ -15,6 +16,11 @@ namespace _2016_05_06_LayeredMvcDemo.DataAccess
 			Database.SetInitializer<SouthwindContext>(new SouthwindDBinitializer());
 		}
 		public DbSet<Customer> Customers { get; set; }
+
+		/// <summary>
+		/// 添加一个静态属性InstanceInCurrentRequest, 用来返回当前HttpContext中保存的DbContext对象
+		/// </summary>
+		public static SouthwindContext InstanceInCurrentRequest => HttpContext.Current.Items["DbContext"] as SouthwindContext;
 	}
 
 	/// <summary>

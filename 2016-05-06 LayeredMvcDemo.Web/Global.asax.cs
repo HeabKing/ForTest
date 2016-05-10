@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
+using _2016_05_06_LayeredMvcDemo.DataAccess;
 using _2016_05_06_LayeredMvcDemo.Web.App_Start;
 
 namespace _2016_05_06_LayeredMvcDemo.Web
@@ -20,5 +21,20 @@ namespace _2016_05_06_LayeredMvcDemo.Web
 			// MVC构造函数的注入
 	        ControllerBuilder.Current.SetControllerFactory(ctrlFactory);
         }
+		/// <summary>
+		/// 在每一次Http请求开始时建立一个新的SouthwindContext对象, 并保存到当前HttpContext对象的Items集合属性中
+		/// </summary>
+		protected void Application_BeginRequest()
+	    {
+		    HttpContext.Current.Items["DbContext"] = new SouthwindContext();
+	    }
+		/// <summary>
+		/// 每当一个Http请求结束的时候, 将原先保存的CouthwindContext对象清除
+		/// </summary>
+	    protected void Application_EndRequest()
+	    {
+			var db = HttpContext.Current.Items["DbContext"] as SouthwindContext;
+		    db?.Dispose();
+	    }
     }
 }

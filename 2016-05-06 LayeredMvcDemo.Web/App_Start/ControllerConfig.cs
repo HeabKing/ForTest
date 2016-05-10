@@ -23,8 +23,7 @@ namespace _2016_05_06_LayeredMvcDemo.Web.App_Start
 			if (controllerName == "Customer")
 			{
 				// 建立依赖对象并注入至新建立的Controller
-				var repository = new CustomerRepository();
-				var service = new CustomerService(repository);
+				var service = new CustomerService();
 				var controller = new CustomerController(service);
 				return controller;
 			}

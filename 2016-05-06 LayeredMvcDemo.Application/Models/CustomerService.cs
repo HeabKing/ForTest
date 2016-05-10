@@ -10,25 +10,30 @@ namespace _2016_05_06_LayeredMvcDemo.Application.Models
 {
 	public class CustomerService : ICustomerService
 	{
-		private readonly ICustomerRepository _repository;
+		private readonly SouthwindContext db;
+
+		public CustomerService()
+		{
+			// 提供默认的DbContext对象
+			db = new SouthwindContext();
+		}
 
 		/// <summary>
-		/// 使用构造函数注入使得Service不依赖特定的Repository实现类型
+		/// 调用方注入DbContext对象
 		/// </summary>
-		/// <param name="repository"></param>
-		public CustomerService(ICustomerRepository repository)
+		public CustomerService(SouthwindContext dbContext)
 		{
-			_repository = repository;
+			this.db = dbContext;
 		}
 
 		public Customer GetCustomerById(int id)
 		{
-			return _repository.GetCustomerById(id);
+			return db.Customers.Find(id);
 		}
 
 		public List<Customer> GetCustomerList(Func<Customer, bool> filter)
 		{
-			return _repository.GetCustomerList(filter).ToList();
+			return db.Customers.Where(filter).ToList();
 		}
 	}
 }
