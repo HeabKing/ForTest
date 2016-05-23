@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="System.Net.Http.HttpClient">
+    <Position X="5.75" Y="4.5" Width="2.5" />
+    <TypeIdentifier />
+    <ShowAsAssociation>
+      <Property Name="DefaultRequestHeaders" />
+      <Property Name="BaseAddress" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="System.Uri" Collapsed="true">
+    <Position X="10" Y="4.5" Width="1.75" />
+    <TypeIdentifier />
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="System.Net.Http.Headers.HttpRequestHeaders" Collapsed="true">
+    <Position X="10" Y="5.25" Width="2" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="System.Net.Http.HttpMessageInvoker">
+    <Position X="7" Y="2" Width="2.5" />
+    <TypeIdentifier />
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="System.Net.Http.HttpMessageHandler">
+    <Position X="13" Y="1.75" Width="2" />
+    <TypeIdentifier />
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="System.Net.Http.HttpClientHandler">
+    <Position X="12.25" Y="4.25" Width="2.75" />
+    <InheritanceLine Type="System.Net.Http.HttpMessageHandler" ManuallyRouted="true">
+      <Path>
+        <Point X="14" Y="3.19" />
+        <Point X="14" Y="3.875" />
+        <Point X="13.544" Y="3.875" />
+        <Point X="13.544" Y="4.126" />
+        <Point X="13.625" Y="4.126" />
+        <Point X="13.625" Y="4.25" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier />
+  </Class>
+  <Class Name="System.Net.Http.DelegatingHandler">
+    <Position X="15.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier />
+    <ShowAsAssociation>
+      <Property Name="InnerHandler" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="System.Object" Collapsed="true">
+    <Position X="10" Y="0.75" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="System.Net.Http.MessageProcessingHandler">
+    <Position X="15.75" Y="7.25" Width="3" />
+    <TypeIdentifier />
+  </Class>
+  <Font Name="Microsoft YaHei UI" Size="9" />
+</ClassDiagram>

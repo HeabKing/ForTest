@@ -1,4 +1,6 @@
-﻿using System.Net.Http;
+﻿using System.Linq;
+using System.Net.Http;
+using Common.MessageService;
 
 namespace ForTest
 {
@@ -6,9 +8,7 @@ namespace ForTest
 	{
 		public static void Main()
 		{
-			var client = new HttpClient();
-			var resulttast = client.GetStringAsync("http://localhost:13573/api/xk.mobile.user.get?userid=34568");
-			var result = resulttast.Result;
+			
 		}
 	}
 
