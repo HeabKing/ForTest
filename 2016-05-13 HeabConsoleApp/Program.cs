@@ -20,96 +20,78 @@ namespace _2016_05_13_HeabConsoleApp
 		static void Main(string[] args)
 		{
 			// 登录
-			string sessionId;
-			StringContent stringContent = new StringContent("Type=LoginValidate&UserName=%E4%BD%95%E5%A3%AB%E9%9B%84&PassWord=he394899990&LimitDay=0");
-			using (HttpClientHandler handler = new HttpClientHandler { UseCookies = false })
-			using (HttpClient client = new HttpClient(handler))
+			using (var client = new HttpClient())
 			{
-				stringContent.Headers.Remove("Content-Type");
-				stringContent.Headers.TryAddWithoutValidation("Content-Type", "application/x-www-form-urlencoded; charset=UTF-8");
-				var response = client.PostAsync("http://oa.zxxk.com/AsynAjax.ashx", stringContent).Result;
-				sessionId = response.Headers.GetValues("Set-Cookie").FirstOrDefault();
-			}
-			// 爬取
-			HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Get, "/Default.aspx");
-			request.Headers.Add("Cookie", sessionId);
-			using (var handler = new HttpClientHandler { UseCookies = false })
-			using (var client = new HttpClient(handler) { BaseAddress = new Uri("http://oa.zxxk.com") })
-			{
-				// 获得原始HTML
-				var response = client.SendAsync(request).Result;
-				response.EnsureSuccessStatusCode();
-				var html = response.Content.ReadAsStringAsync().Result;
+				string requestRaw = @"POST http://oa.zxxk.com/AsynAjax.ashx HTTP/1.1
+					Accept: */*
+					Origin: //oa.zxxk.com
+					X-Requested-With: XMLHttpRequest
+					User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36
+					Referer: //oa.zxxk.com/
+					Accept-Encoding: gzip, deflate
+					Accept-Language: zh-CN,zh;q=0.8,en;q=0.6
+					Content-Type: application/x-www-form-urlencoded; charset=utf-8
+					Host: oa.zxxk.com
+					Content-Length: 87
+					Expect: 100-continue
+					Connection: Keep-Alive
+
+					Type=LoginValidate&UserName=%E4%BD%95%E5%A3%AB%E9%9B%84&PassWord=he394899990&LimitDay=0";
+
+				IEnumerable<string> sessionId;
+				client.SendAsync(new HttpRequestMessage().CreateFromRaw(requestRaw)).Result.Headers.TryGetValues("Set-Cookie", out sessionId);
+				var sessionIdList = sessionId as IList<string> ?? sessionId.ToList();
+
+				requestRaw = $@"GET http://oa.zxxk.com/Default.aspx HTTP/1.1
+					Host: oa.zxxk.com
+					Connection: keep-alive
+					Pragma: no-cache
+					Cache-Control: no-cache
+					Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8
+					Upgrade-Insecure-Requests: 1
+					User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36
+					Referer: http://oa.zxxk.com/Function/Index.html
+					Accept-Encoding: gzip, deflate, sdch
+					Accept-Language: zh-CN,zh;q=0.8,en;q=0.6
+					Cookie: {sessionIdList.FirstOrDefault()}";
+
+				var html = client.SendAsync(new HttpRequestMessage().CreateFromRaw(requestRaw)).Result.Content.ReadAsStringAsync().Result;
+
 				// 获得待点击URL信息列表
 				IEnumerable<dynamic> listLi = (from Match m in Regex.Matches(html, "<li>.+?</li>")
-											  where Regex.IsMatch(m.Value, "<img")
-											  let title = Regex.Match(m.Value, "title=\"(?<title>.*?)\"")
-											  let url = Regex.Match(m.Value, "href=(\"|')(?<url>.*?)(\"|')")
-											  let date = Regex.Match(m.Value, @"\[(?<date>.*?)\]")
-											  select new
-											  {
-												  Title = title.Success ? title.Result("${title}") : "",
-												  Url = url.Success ? url.Result("${url}") : "",
-												  Date = date.Success ? date.Result("${date}") : "",
-											  }).ToList();
+											   where Regex.IsMatch(m.Value, "<img")
+											   let title = Regex.Match(m.Value, "title=\"(?<title>.*?)\"")
+											   let url = Regex.Match(m.Value, "href=(\"|')(?<url>.*?)(\"|')")
+											   let date = Regex.Match(m.Value, @"\[(?<date>.*?)\]")
+											   select new
+											   {
+												   Title = title.Success ? title.Result("${title}") : "",
+												   Url = url.Success ? url.Result("${url}") : "",
+												   Date = date.Success ? date.Result("${date}") : "",
+											   }).ToList();
 
 				var taskList = new List<Task<HttpResponseMessage>>();
 				var listTemp = new Dictionary<int, int>();
+
 				// 进行自动点击
+				var request = new HttpRequestMessage();
 				foreach (var item in listLi)
 				{
-					request.RequestUri = new Uri(client.BaseAddress, item.Url);
-					var r = client.SendAsync(CloneHttpRequestMessageAsync(request).Result);
+					request.RequestUri = new Uri(new Uri("http://oa.zxxk.com"), item.Url);
+					var r = client.SendAsync(request.Clone().Result);
 					taskList.Add(r);
 					listTemp[listLi.ToList().IndexOf(item)] = taskList.IndexOf(r);
 				}
 				Task.WhenAll(taskList);
 				string emailStr = taskList.Where(m => !m.IsFaulted && m.Result.IsSuccessStatusCode).Aggregate("", (c, i) => c += listLi.ToList()[listTemp[taskList.IndexOf(i)]].Title + "   " + listLi.ToList()[listTemp[taskList.IndexOf(i)]].Date + "   " + listLi.ToList()[listTemp[taskList.IndexOf(i)]].Url + "    \r\n");
-				emailStr += $" \r\n 总共 {taskList.Count(m => !m.IsFaulted && m.Result.IsSuccessStatusCode)*5} 积分到手...";
+				emailStr += $" \r\n 总共 {taskList.Count(m => !m.IsFaulted && m.Result.IsSuccessStatusCode) * 5} 积分到手...";
 				IMessageService emailService = new EmailServiceFromQq("heabking@qq.com", "pwuomsefcevacbeg");
 				emailService.SendMessage(new EmailMessage
 				{
-					 Msg = emailStr,
-					  Subject = DateTime.Now + " OA 积分获得情况"
+					Msg = emailStr,
+					Subject = DateTime.Now + " OA 积分获得情况"
 				}, "394899990@qq.com");
 			}
-		}
-		/// <summary>
-		/// http://stackoverflow.com/questions/25044166/how-to-clone-a-httprequestmessage-when-the-original-request-has-content?noredirect=1#comment38953745_25044166
-		/// http://stackoverflow.com/questions/18000583/re-send-httprequestmessage-exception/18014515#18014515
-		/// http://stackoverflow.com/questions/25047311/the-request-message-was-already-sent-cannot-send-the-same-request-message-multi
-		/// http://stackoverflow.com/questions/25047311/the-request-message-was-already-sent-cannot-send-the-same-request-message-multi
-		/// </summary>
-		/// <param name="req"></param>
-		/// <returns></returns>
-		public static async Task<HttpRequestMessage> CloneHttpRequestMessageAsync(HttpRequestMessage req)
-		{
-			HttpRequestMessage clone = new HttpRequestMessage(req.Method, req.RequestUri);
-
-			// Copy the request's content (via a MemoryStream) into the cloned object
-			var ms = new MemoryStream();
-			if (req.Content != null)
-			{
-				await req.Content.CopyToAsync(ms).ConfigureAwait(false);
-				ms.Position = 0;
-				clone.Content = new StreamContent(ms);
-
-				// Copy the content headers
-				if (req.Content.Headers != null)
-					foreach (var h in req.Content.Headers)
-						clone.Content.Headers.Add(h.Key, h.Value);
-			}
-
-
-			clone.Version = req.Version;
-
-			foreach (KeyValuePair<string, object> prop in req.Properties)
-				clone.Properties.Add(prop);
-
-			foreach (KeyValuePair<string, IEnumerable<string>> header in req.Headers)
-				clone.Headers.TryAddWithoutValidation(header.Key, header.Value);
-
-			return clone;
 		}
 	}
 }

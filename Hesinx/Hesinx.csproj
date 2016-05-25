@@ -4,16 +4,15 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{58CCE9B1-FAE3-4925-9E10-084B165EE542}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <ProjectGuid>{1DB9E9D2-F63A-43C4-85EE-816A00E79B2A}</ProjectGuid>
+    <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>_2016_05_17_HttpClientStudy</RootNamespace>
-    <AssemblyName>2016-05-17 HttpClientStudy</AssemblyName>
+    <RootNamespace>Hesinx</RootNamespace>
+    <AssemblyName>Hesinx</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -23,7 +22,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -42,20 +40,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Program.cs" />
+    <Compile Include="Extension\System.Net.Http\Extension.cs" />
+    <Compile Include="Extension\System.Text.RegularExpressions\Extension.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
-    <None Include="HttpClient类图.cd" />
-    <None Include="HttpRequest和HttpResponse类图.cd" />
-    <None Include="三个标头容器类.cd" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Hesinx\Hesinx.csproj">
-      <Project>{1DB9E9D2-F63A-43C4-85EE-816A00E79B2A}</Project>
-      <Name>Hesinx</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
