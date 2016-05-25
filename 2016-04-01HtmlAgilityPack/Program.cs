@@ -5,13 +5,47 @@ using System.Net.Http;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using System.Xml;
+using System.Xml.XPath;
 
 
 namespace _2016_04_01HtmlAgilityPack
 {
 	class Program
 	{
-		static void Main(string[] args)
+
+		public static void Main()
+		{
+			//<?xml version="1.0"encoding="iso-8859-1"?>
+			//<catalog>
+			//	<cd country="USA">
+			//		<title>Empire Burlesque</title>
+			//		<artist>Bob Dylan</artist>
+			//		<price>10.90</price>
+			//	</cd>
+			//</catalog>
+
+			HtmlAgilityPack.HtmlDocument doc = new HtmlAgilityPack.HtmlDocument();
+			doc.Load("xml.xml");
+			var node = doc.DocumentNode.SelectSingleNode("/catalog/cd/@country");   // TODO : 选择的是cd元素而不是country属性
+			Console.WriteLine(node.GetType());
+			Console.WriteLine(node);
+
+
+			HtmlAgilityPack.HtmlNodeNavigator docx = new HtmlAgilityPack.HtmlNodeNavigator("xml.xml");
+			var nodex = docx.SelectSingleNode("/catalog/cd/@country");	// TODO 不能使用SelectNodes
+			Console.WriteLine(nodex.GetType());
+			Console.WriteLine(nodex.Value);     // 这个解决了属性选择的问题
+
+
+			// http://stackoverflow.com/questions/26744559/htmlagilitypack-xpath-and-regex TODO 关于 SelectNodes 的解决方案
+
+			//XmlDocument doc = new XmlDocument();
+			//doc.Load("xml.xml");
+			//var r = doc.DocumentElement.SelectSingleNode("//@country");	// !! XmlDocodument就支持
+		}
+
+		static void Main1(string[] args)
 		{
 			HttpClient client = new HttpClient();
 			var htmlTask = client.GetStringAsync("http://www.baidu.com");

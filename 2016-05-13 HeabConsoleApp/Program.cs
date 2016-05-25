@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
@@ -9,6 +10,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using Common.MessageService;
+using System.Xml;
 
 namespace _2016_05_13_HeabConsoleApp
 {
@@ -58,17 +60,30 @@ namespace _2016_05_13_HeabConsoleApp
 				var html = client.SendAsync(new HttpRequestMessage().CreateFromRaw(requestRaw)).Result.Content.ReadAsStringAsync().Result;
 
 				// 获得待点击URL信息列表
-				IEnumerable<dynamic> listLi = (from Match m in Regex.Matches(html, "<li>.+?</li>")
-											   where Regex.IsMatch(m.Value, "<img")
-											   let title = Regex.Match(m.Value, "title=\"(?<title>.*?)\"")
-											   let url = Regex.Match(m.Value, "href=(\"|')(?<url>.*?)(\"|')")
-											   let date = Regex.Match(m.Value, @"\[(?<date>.*?)\]")
-											   select new
-											   {
-												   Title = title.Success ? title.Result("${title}") : "",
-												   Url = url.Success ? url.Result("${url}") : "",
-												   Date = date.Success ? date.Result("${date}") : "",
-											   }).ToList();
+				//IEnumerable<dynamic> listLi = (from Match m in Regex.Matches(html, "<li>.+?</li>")
+				//							   where Regex.IsMatch(m.Value, "<img")
+				//							   let title = Regex.Match(m.Value, "title=\"(?<title>.*?)\"")
+				//							   let url = Regex.Match(m.Value, "href=(\"|')(?<url>.*?)(\"|')")
+				//							   let date = Regex.Match(m.Value, @"\[(?<date>.*?)\]")
+				//							   select new
+				//							   {
+				//								   Title = title.Success ? title.Result("${title}") : "",
+				//								   Url = url.Success ? url.Result("${url}") : "",
+				//								   Date = date.Success ? date.Result("${date}") : "",
+				//							   }).ToList();
+
+				// 获得待点击URL信息列表 - 升级
+				var htmlDoc = new HtmlAgilityPack.HtmlDocument();
+				htmlDoc.LoadHtml(html);
+				var doc = htmlDoc.CreateNavigator() as HtmlAgilityPack.HtmlNodeNavigator;
+				
+				IEnumerable<dynamic> listLi = from m in htmlDoc.DocumentNode.SelectNodes("//li[img]")
+											  select new
+											  {
+												  Url = m.SelectSingleNode("//@href"),  // TODO 选择的是href所在的元素而不是href属性本身
+												  Title = m.SelectSingleNode("//@title"),
+												  Date = m.SelectSingleNode("//span[text()]")
+											  };
 
 				var taskList = new List<Task<HttpResponseMessage>>();
 				var listTemp = new Dictionary<int, int>();
