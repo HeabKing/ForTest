@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
@@ -39,16 +40,28 @@ namespace _2016_04_01HtmlAgilityPack
 
 
 			HtmlAgilityPack.HtmlNodeNavigator docx = new HtmlAgilityPack.HtmlNodeNavigator("xml.xml");
-			var nodex = docx.SelectSingleNode("/catalog/cd/@country");	// TODO 不能使用SelectNodes
+			var nodex = docx.SelectSingleNode("/catalog/cd/@country");  // TODO 不能使用SelectNodes
+			var ss = nodex.SelectSingleNode("//price");
+			Debug.WriteLine(ss?.Value ?? "null");
+
+			
+
+			nodex.MoveToRoot();
+			var ss2 = nodex.SelectSingleNode("//price");
+			Debug.WriteLine(ss2?.Value ?? "null");
+
+			nodex.MoveToFirstChild();
+
+
 			Console.WriteLine(nodex.GetType());
 			Console.WriteLine(nodex.Value);     // 这个解决了属性选择的问题
 
-			
+
 			var r = docx.Select("/catalog/cd/@country").Cast<HtmlNodeNavigator>();
 
 			// http://stackoverflow.com/questions/26744559/htmlagilitypack-xpath-and-regex TODO 关于 SelectNodes 的解决方案
 
-			var nodes = docx.SelectNodes("/catalog/cd/@country");
+			var nodes = docx.SelectSet("/catalog/cd/@country");
 
 			//XmlDocument doc = new XmlDocument();
 			//doc.Load("xml.xml");

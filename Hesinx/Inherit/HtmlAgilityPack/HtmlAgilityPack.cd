@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="HtmlAgilityPack.HtmlAgilityPackInherit">
+    <Position X="4.25" Y="3" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Inherit\HtmlAgilityPack\HtmlAgilityPackInherit.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HtmlAgilityPack.HtmlDocument">
+    <Position X="0.5" Y="1.25" Width="3.25" />
+    <AssociationLine Name="DocumentNode" Type="HtmlAgilityPack.HtmlNode">
+      <MemberNameLabel ManuallyPlaced="true" ManuallySized="true">
+        <Position X="1.883" Y="0.089" Height="0.174" Width="1.702" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier />
+    <ShowAsAssociation>
+      <Property Name="DocumentNode" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="HtmlAgilityPack.HtmlNode">
+    <Position X="7.5" Y="2.75" Width="2.5" />
+    <InheritanceLine Type="System.Object" FixedToPoint="true">
+      <Path>
+        <Point X="8.5" Y="2.048" />
+        <Point X="8.5" Y="2.375" />
+        <Point X="9.167" Y="2.375" />
+        <Point X="9.167" Y="2.75" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier />
+    <ShowAsAssociation>
+      <Property Name="ChildNodes" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.1" />
+  </Class>
+  <Class Name="System.Object" Collapsed="true">
+    <Position X="7.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="HtmlAgilityPack.HtmlNodeCollection">
+    <Position X="11.25" Y="3.25" Width="2" />
+    <TypeIdentifier />
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="HtmlAgilityPack.HtmlNodeNavigator">
+    <Position X="1.25" Y="11.25" Width="2.5" />
+    <InheritanceLine Type="System.Xml.XPath.XPathNavigator" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="4.75" Y="11.688" />
+        <Point X="3.75" Y="11.688" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier />
+  </Class>
+  <Class Name="System.Xml.XPath.XPathNavigator">
+    <Position X="4.75" Y="10" Width="1.5" />
+    <InheritanceLine Type="System.Xml.XPath.XPathItem" ManuallyRouted="true" FixedToPoint="true">
+      <Path>
+        <Point X="5.75" Y="8.851" />
+        <Point X="5.75" Y="9.226" />
+        <Point X="6.625" Y="9.226" />
+        <Point X="6.625" Y="10.688" />
+        <Point X="6.25" Y="10.688" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier />
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="System.Xml.XPath.XPathItem">
+    <Position X="5" Y="5.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Interface Name="System.Xml.XPath.IXPathNavigable">
+    <Position X="4.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier />
+  </Interface>
+  <Font Name="Microsoft YaHei UI" Size="9" />
+</ClassDiagram>

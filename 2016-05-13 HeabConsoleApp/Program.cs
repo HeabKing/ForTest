@@ -11,6 +11,7 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using Common.MessageService;
 using System.Xml;
+using HtmlAgilityPack;
 
 namespace _2016_05_13_HeabConsoleApp
 {
@@ -21,10 +22,19 @@ namespace _2016_05_13_HeabConsoleApp
 	{
 		static void Main(string[] args)
 		{
+			string username = System.Uri.EscapeDataString("何士雄"); ;
+			string password = "he394899990";
+			string emailaddress = "394899990@qq.com";
+			Debug.WriteLine(username);
+			Begin(username, password, emailaddress);
+		}
+
+		public static void Begin(string username, string password, string emailaddress)
+		{
 			// 登录
 			using (var client = new HttpClient())
 			{
-				string requestRaw = @"POST http://oa.zxxk.com/AsynAjax.ashx HTTP/1.1
+				string requestRaw = $@"POST http://oa.zxxk.com/AsynAjax.ashx HTTP/1.1
 					Accept: */*
 					Origin: //oa.zxxk.com
 					X-Requested-With: XMLHttpRequest
@@ -38,10 +48,13 @@ namespace _2016_05_13_HeabConsoleApp
 					Expect: 100-continue
 					Connection: Keep-Alive
 
-					Type=LoginValidate&UserName=%E4%BD%95%E5%A3%AB%E9%9B%84&PassWord=he394899990&LimitDay=0";
+					Type=LoginValidate&UserName={username}&PassWord={password}&LimitDay=0";
 
 				IEnumerable<string> sessionId;
-				client.SendAsync(new HttpRequestMessage().CreateFromRaw(requestRaw)).Result.Headers.TryGetValues("Set-Cookie", out sessionId);
+				var response = client.SendAsync(new HttpRequestMessage().CreateFromRaw(requestRaw)).Result;
+				response.EnsureSuccessStatusCode();
+				response.Headers.TryGetValues("Set-Cookie", out sessionId);
+
 				var sessionIdList = sessionId as IList<string> ?? sessionId.ToList();
 
 				requestRaw = $@"GET http://oa.zxxk.com/Default.aspx HTTP/1.1
@@ -56,35 +69,25 @@ namespace _2016_05_13_HeabConsoleApp
 					Accept-Encoding: gzip, deflate, sdch
 					Accept-Language: zh-CN,zh;q=0.8,en;q=0.6
 					Cookie: {sessionIdList.FirstOrDefault()}";
-
-				var html = client.SendAsync(new HttpRequestMessage().CreateFromRaw(requestRaw)).Result.Content.ReadAsStringAsync().Result;
+				response = client.SendAsync(new HttpRequestMessage().CreateFromRaw(requestRaw)).Result;
+				response.EnsureSuccessStatusCode();
+				var html = response.Content.ReadAsStringAsync().Result;
 
 				// 获得待点击URL信息列表
-				//IEnumerable<dynamic> listLi = (from Match m in Regex.Matches(html, "<li>.+?</li>")
-				//							   where Regex.IsMatch(m.Value, "<img")
-				//							   let title = Regex.Match(m.Value, "title=\"(?<title>.*?)\"")
-				//							   let url = Regex.Match(m.Value, "href=(\"|')(?<url>.*?)(\"|')")
-				//							   let date = Regex.Match(m.Value, @"\[(?<date>.*?)\]")
-				//							   select new
-				//							   {
-				//								   Title = title.Success ? title.Result("${title}") : "",
-				//								   Url = url.Success ? url.Result("${url}") : "",
-				//								   Date = date.Success ? date.Result("${date}") : "",
-				//							   }).ToList();
-
-				// 获得待点击URL信息列表 - 升级
-				var htmlDoc = new HtmlAgilityPack.HtmlDocument();
-				htmlDoc.LoadHtml(html);
-				var doc = htmlDoc.CreateNavigator() as HtmlAgilityPack.HtmlNodeNavigator;
-				
-				IEnumerable<dynamic> listLi = from m in htmlDoc.DocumentNode.SelectNodes("//li[img]")
+				IEnumerable<dynamic> listLi = from m in (null as HtmlNodeNavigator)
+															.Create(html)
+															.SelectSetAsRoot("//li[img]")
+											  let title = m.SelectSingle("//@title").Value
+											  let url = m.SelectSingle("//@href").Value
+											  let date = m.SelectSingle("//span/text()").Value
+											  where !Regex.IsMatch(url, "knowledge", RegexOptions.IgnoreCase)
 											  select new
 											  {
-												  Url = m.SelectSingleNode("//@href"),  // TODO 选择的是href所在的元素而不是href属性本身
-												  Title = m.SelectSingleNode("//@title"),
-												  Date = m.SelectSingleNode("//span[text()]")
+												  Title = title,
+												  Url = url,
+												  Date = date
 											  };
-
+				listLi = listLi.ToList();
 				var taskList = new List<Task<HttpResponseMessage>>();
 				var listTemp = new Dictionary<int, int>();
 
@@ -98,14 +101,14 @@ namespace _2016_05_13_HeabConsoleApp
 					listTemp[listLi.ToList().IndexOf(item)] = taskList.IndexOf(r);
 				}
 				Task.WhenAll(taskList);
-				string emailStr = taskList.Where(m => !m.IsFaulted && m.Result.IsSuccessStatusCode).Aggregate("", (c, i) => c += listLi.ToList()[listTemp[taskList.IndexOf(i)]].Title + "   " + listLi.ToList()[listTemp[taskList.IndexOf(i)]].Date + "   " + listLi.ToList()[listTemp[taskList.IndexOf(i)]].Url + "    \r\n");
-				emailStr += $" \r\n 总共 {taskList.Count(m => !m.IsFaulted && m.Result.IsSuccessStatusCode) * 5} 积分到手...";
+				string emailStr = taskList.Where(m => !m.IsFaulted && m.Result.IsSuccessStatusCode).Aggregate("", (c, i) => c += listLi.ToList()[listTemp[taskList.IndexOf(i)]].Title + "   " + listLi.ToList()[listTemp[taskList.IndexOf(i)]].Date + "   " + listLi.ToList()[listTemp[taskList.IndexOf(i)]].Url + "    <br/>");
+				emailStr += $" <br/> 总共 {taskList.Count(m => !m.IsFaulted && m.Result.IsSuccessStatusCode) * 5} 积分到手...";
 				IMessageService emailService = new EmailServiceFromQq("heabking@qq.com", "pwuomsefcevacbeg");
 				emailService.SendMessage(new EmailMessage
 				{
 					Msg = emailStr,
 					Subject = DateTime.Now + " OA 积分获得情况"
-				}, "394899990@qq.com");
+				}, emailaddress);
 			}
 		}
 	}

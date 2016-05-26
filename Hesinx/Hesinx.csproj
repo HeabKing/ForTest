@@ -47,9 +47,12 @@
     <Compile Include="Extension\HtmlAgilityPack\HtmlNodeNavigatorExtension.cs" />
     <Compile Include="Extension\System.Net.Http\HttpRequestMessageExtension.cs" />
     <Compile Include="Extension\System.Text.RegularExpressions\RegexExtension.cs" />
+    <Compile Include="Inherit\HtmlAgilityPack\HtmlAgilityPackInherit.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Inherit\HtmlAgilityPack\HtmlAgilityPack.cd" />
+    <None Include="Inherit\HtmlAgilityPack\HtmlAgilityPack.dgml" />
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
