@@ -10,7 +10,7 @@ namespace System.Text.RegularExpressions
 	/// <summary>
 	/// 关于正则的拓展
 	/// </summary>
-	public static class HesinxExtension
+	public static class RegexExtension
 	{
 		/// <summary>
 		/// Extension - Regex

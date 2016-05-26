@@ -13,7 +13,7 @@ namespace System.Net.Http
 	/// <summary>
 	/// System.net.Http的拓展方法
 	/// </summary>
-	public static class HesinxExtension
+	public static class HttpRequestMessageExtension
 	{
 		/// <summary>
 		/// Extension - HttpRequestMessage

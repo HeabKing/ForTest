@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
@@ -7,6 +8,7 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Xml;
 using System.Xml.XPath;
+using HtmlAgilityPack;
 
 
 namespace _2016_04_01HtmlAgilityPack
@@ -16,12 +18,16 @@ namespace _2016_04_01HtmlAgilityPack
 
 		public static void Main()
 		{
-			//<?xml version="1.0"encoding="iso-8859-1"?>
 			//<catalog>
 			//	<cd country="USA">
 			//		<title>Empire Burlesque</title>
 			//		<artist>Bob Dylan</artist>
 			//		<price>10.90</price>
+			//	</cd>
+			//    <cd country="UK">
+			//		<title>James Bond</title>
+			//		<artist>Hello World</artist>
+			//		<price>123456</price>
 			//	</cd>
 			//</catalog>
 
@@ -37,8 +43,12 @@ namespace _2016_04_01HtmlAgilityPack
 			Console.WriteLine(nodex.GetType());
 			Console.WriteLine(nodex.Value);     // 这个解决了属性选择的问题
 
+			
+			var r = docx.Select("/catalog/cd/@country").Cast<HtmlNodeNavigator>();
 
 			// http://stackoverflow.com/questions/26744559/htmlagilitypack-xpath-and-regex TODO 关于 SelectNodes 的解决方案
+
+			var nodes = docx.SelectNodes("/catalog/cd/@country");
 
 			//XmlDocument doc = new XmlDocument();
 			//doc.Load("xml.xml");
