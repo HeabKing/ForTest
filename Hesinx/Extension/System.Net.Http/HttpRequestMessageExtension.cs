@@ -8,6 +8,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
+// ReSharper disable once CheckNamespace
 namespace System.Net.Http
 {
 	/// <summary>
@@ -33,6 +34,7 @@ namespace System.Net.Http
 		{
 			// 解析reqRaw
 			var splitLine = Regex.Split(reqRaw.Trim(), Environment.NewLine).Select(m => m.Trim()).ToList();
+			#region 1. 解析请求行
 			// 1. 解析请求行
 			var requestLine = Regex.Split(splitLine.FirstOrDefault() ?? "", "\\s");
 			if (requestLine.Count() != 3 ||
@@ -43,10 +45,12 @@ namespace System.Net.Http
 			}
 			var httpMethod = requestLine[0].Trim();
 			var httpUrl = requestLine[1].Trim();
-			var httpVersion = requestLine[2].Trim();
+			var httpVersion = requestLine[2].Trim();    // 这里先使用默认的, 不用reqRaw中的
 			request.Method = new HttpMethod(httpMethod);
 			request.RequestUri = new Uri(httpUrl);
 			splitLine.Remove(splitLine.First());
+			#endregion
+			#region 2. 解析请求体
 			// 2. 解析请求体
 			if (httpMethod.ToLower() != "get")
 			{
@@ -61,24 +65,49 @@ namespace System.Net.Http
 					}
 					splitLine.RemoveRange(indexFlag, splitLine.Count - indexFlag);
 				}
-				// 解析Content-Type, 省的老是自动生成text/plain
-				var typeAndEncode = splitLine.FirstOrDefault(m => Regex.IsMatch(m, "Content-Type", RegexOptions.IgnoreCase))?.Split(':')[1].Trim().Split(';');
-				request.Content = typeAndEncode != null ? 
-					new StringContent(content, Encoding.GetEncoding(typeAndEncode[1].Trim().Split('=')[1]), typeAndEncode[0].Trim()) : 
-					new StringContent(content);
-				splitLine = splitLine.Where(m => !Regex.IsMatch(m, "(Content-Type|Content-Length)", RegexOptions.IgnoreCase)).ToList();
-			}
-			// 3. 解析请求行
-			for (int i = 1; i < splitLine.Count; i++)
+				request.Content = new StringContent(content);
+				// 我截取的Content内容可能不跟reqRaw中的完全长度一样, 所以还是依赖框架自己计算Content-Length吧
+				splitLine = splitLine.Where(m => !Regex.IsMatch(m, "Content-Length", RegexOptions.IgnoreCase)).ToList();
+			} 
+			#endregion
+			// 3. 解析请求头
+			foreach (string keyvalue in splitLine)
 			{
-				var keyValue = splitLine[i].Split(':');
+				var keyValue = keyvalue.Split(":".ToCharArray(), 2);
 				var key = keyValue.FirstOrDefault()?.Trim();
 				var value = keyValue.LastOrDefault()?.Trim();
 				if (key == null)
 				{
 					throw new ArgumentException("请求头解析出错");
 				}
-				request.Headers.TryAddWithoutValidation(key, value);
+				// 先尝试添加到HttpRequestHeaders中, 如果不行尝试添加到HttpContentHeaders中
+				bool removeOk = false;
+				try
+				{
+					request.Headers.Remove(key);
+					removeOk = true;
+				}
+				catch (Exception)
+				{
+					// ignored
+				}
+				// 如果可以添加到HttpRequestHeaders中
+				if (removeOk && request.Headers.TryAddWithoutValidation(key, value)) continue;
+				// 尝试添加到HttpContentHeaders中
+				removeOk = false;
+				try
+				{
+					request.Content.Headers.Remove(key);
+					removeOk = true;
+				}
+				catch (Exception)
+				{
+					// ignored
+				}
+				if (!removeOk || !request.Content.Headers.TryAddWithoutValidation(key, value))
+				{
+					throw new ArgumentException(nameof(key));
+				}
 			}
 			return request;
 		}

@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Diagnostics;
+using System.Linq;
 using System.Net.Http;
 using Common.MessageService;
 
@@ -8,7 +9,34 @@ namespace ForTest
 	{
 		public static void Main()
 		{
+			var arrInt = new []
+			{
+				40,
+				41,
+				60,
+				62,
+				64,
+				44,
+				59,
+				58,
+				92,
+				34,
+				47,
+				91,
+				93,
+				63,
+				61,
+				123,
+				125,
+			};
+			for (int i = 0; i <= 33; i++)
+			{
+				Debug.WriteLine((char)i);
+			}
+			arrInt.ToList().ForEach(s=>Debug.WriteLine((char)s));
 			
+			bool[] a = new bool[2];
+			System.Console.WriteLine(a[0]);
 		}
 	}
 

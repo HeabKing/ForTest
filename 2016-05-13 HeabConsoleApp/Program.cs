@@ -34,19 +34,21 @@ namespace _2016_05_13_HeabConsoleApp
 			// 登录
 			using (var client = new HttpClient())
 			{
-				string requestRaw = $@"POST http://oa.zxxk.com/AsynAjax.ashx HTTP/1.1
+				string requestRaw = $@"
+					POST http://oa.zxxk.com/AsynAjax.ashx HTTP/1.1
+					Host: oa.zxxk.com
+					Connection: keep-alive
+					Content-Length: 87
+					Pragma: no-cache
+					Cache-Control: no-cache
 					Accept: */*
-					Origin: //oa.zxxk.com
+					Origin: http://oa.zxxk.com
 					X-Requested-With: XMLHttpRequest
 					User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36
-					Referer: //oa.zxxk.com/
+					Content-Type: application/x-www-form-urlencoded; charset=UTF-8
+					Referer: http://oa.zxxk.com/Login.html
 					Accept-Encoding: gzip, deflate
 					Accept-Language: zh-CN,zh;q=0.8,en;q=0.6
-					Content-Type: application/x-www-form-urlencoded; charset=utf-8
-					Host: oa.zxxk.com
-					Content-Length: 87
-					Expect: 100-continue
-					Connection: Keep-Alive
 
 					Type=LoginValidate&UserName={username}&PassWord={password}&LimitDay=0";
 
@@ -55,8 +57,13 @@ namespace _2016_05_13_HeabConsoleApp
 				response.EnsureSuccessStatusCode();
 				response.Headers.TryGetValues("Set-Cookie", out sessionId);
 
-				var sessionIdList = sessionId as IList<string> ?? sessionId.ToList();
+				if (sessionId == null)
+				{
+					throw new HttpRequestException("未返回 Set-Cookie, 登录失败");
+				}
 
+				var sessionIdList = sessionId as IList<string> ?? sessionId.ToList();
+				
 				requestRaw = $@"GET http://oa.zxxk.com/Default.aspx HTTP/1.1
 					Host: oa.zxxk.com
 					Connection: keep-alive
