@@ -12,6 +12,7 @@ using System.Threading.Tasks;
 using Common.MessageService;
 using System.Xml;
 using HtmlAgilityPack;
+using System.Web;
 
 namespace _2016_05_13_HeabConsoleApp
 {
@@ -22,11 +23,32 @@ namespace _2016_05_13_HeabConsoleApp
 	{
 		static void Main(string[] args)
 		{
-			string username = System.Uri.EscapeDataString("何士雄"); ;
-			string password = "he394899990";
-			string emailaddress = "394899990@qq.com";
-			Debug.WriteLine(username);
-			Begin(username, password, emailaddress);
+			
+		}
+
+
+
+		public class Settings
+		{
+			public string UserName { get; set; }
+			public string Password { get; set; }
+			public string EmailAddress { get; set; }
+		}
+
+		public static void OaRun()
+		{
+			string fullFileName = "settings.text";
+			fullFileName = HttpContext.Current.Server.MapPath(fullFileName);
+			bool hasFile = File.Exists(fullFileName);
+			string settingsString = hasFile ? System.IO.File.ReadAllText(fullFileName) : "";
+			var settings = Newtonsoft.Json.JsonConvert.DeserializeObject<Settings>(settingsString);
+			if (settings?.UserName == null)
+			{
+				string temp = Newtonsoft.Json.JsonConvert.SerializeObject(new Settings());
+				System.IO.File.WriteAllText(fullFileName, temp);
+				throw new Exception("请在配置文件写入个人信息");
+			}
+			Begin(settings.UserName, settings.Password, settings.EmailAddress);
 		}
 
 		public static void Begin(string username, string password, string emailaddress)
@@ -63,7 +85,7 @@ namespace _2016_05_13_HeabConsoleApp
 				}
 
 				var sessionIdList = sessionId as IList<string> ?? sessionId.ToList();
-				
+
 				requestRaw = $@"GET http://oa.zxxk.com/Default.aspx HTTP/1.1
 					Host: oa.zxxk.com
 					Connection: keep-alive
