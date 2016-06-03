@@ -53,6 +53,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hesinx.UnitTest", "Hesinx.U
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApplication1", "WebApplication1\WebApplication1.csproj", "{30D84CFC-8A06-4D7D-905C-D94E1E449521}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "2016-06-02 图片压缩", "2016-06-02 图片压缩\2016-06-02 图片压缩.csproj", "{04355F6B-B90B-48C4-8823-F18CD1573EE8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -159,6 +161,10 @@ Global
 		{30D84CFC-8A06-4D7D-905C-D94E1E449521}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{30D84CFC-8A06-4D7D-905C-D94E1E449521}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{30D84CFC-8A06-4D7D-905C-D94E1E449521}.Release|Any CPU.Build.0 = Release|Any CPU
+		{04355F6B-B90B-48C4-8823-F18CD1573EE8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{04355F6B-B90B-48C4-8823-F18CD1573EE8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{04355F6B-B90B-48C4-8823-F18CD1573EE8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{04355F6B-B90B-48C4-8823-F18CD1573EE8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

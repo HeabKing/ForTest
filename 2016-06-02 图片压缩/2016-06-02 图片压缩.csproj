@@ -4,15 +4,16 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{1DB9E9D2-F63A-43C4-85EE-816A00E79B2A}</ProjectGuid>
-    <OutputType>Library</OutputType>
+    <ProjectGuid>{04355F6B-B90B-48C4-8823-F18CD1573EE8}</ProjectGuid>
+    <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Hesinx</RootNamespace>
-    <AssemblyName>Hesinx</AssemblyName>
+    <RootNamespace>_2016_06_02_图片压缩</RootNamespace>
+    <AssemblyName>2016-06-02 图片压缩</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -22,6 +23,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -30,10 +32,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="HtmlAgilityPack, Version=1.4.9.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL">
-      <HintPath>..\packages\HtmlAgilityPack.1.4.9\lib\Net45\HtmlAgilityPack.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
@@ -45,17 +43,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Extension\HtmlAgilityPack\HtmlNodeNavigatorExtension.cs" />
-    <Compile Include="Extension\System.Net.Http\HttpRequestMessageExtension.cs" />
-    <Compile Include="Extension\System.Text.RegularExpressions\RegexExtension.cs" />
-    <Compile Include="Inherit\HtmlAgilityPack\HtmlAgilityPackInherit.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Utility\ImageProcess.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Inherit\HtmlAgilityPack\HtmlAgilityPack.cd" />
-    <None Include="Inherit\HtmlAgilityPack\HtmlAgilityPack.dgml" />
-    <None Include="packages.config" />
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Hesinx\Hesinx.csproj">
+      <Project>{1db9e9d2-f63a-43c4-85ee-816a00e79b2a}</Project>
+      <Name>Hesinx</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

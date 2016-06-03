@@ -1,4 +1,5 @@
 ﻿using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Net.Http;
 using Common.MessageService;
@@ -8,6 +9,18 @@ namespace ForTest
 	public class Program
 	{
 		public static void Main()
+		{
+			string f1 = @"c:\fdsa\432";
+			string f2 = @"c:\fdsa\432\";
+			string f3 = @"c:\fdsa\432\a";
+			string f4 = @"c:\fdsa\432\a.text";
+			System.Console.WriteLine(Path.GetDirectoryName(f1));
+			System.Console.WriteLine(Path.GetDirectoryName(f2));
+			System.Console.WriteLine(Path.GetDirectoryName(f3));
+			System.Console.WriteLine(Path.GetDirectoryName(f4));
+		}
+
+		public static void Main1()
 		{
 			var arrInt = new []
 			{
