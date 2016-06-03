@@ -13,9 +13,20 @@ namespace Hesinx.Utility
 	/// 改变图片质量类 .jpg(有压缩) .jpeg(有压缩) .png(没压缩) .bmp(没压缩)
 	/// </summary>
 	/// <remarks>何士雄 2016-06-02</remarks>
-	/// <example>测试 390 个图片 282 M 10 - 20秒钟</example>
+	/// <example>200个jgp图片, 200M 7秒钟</example>
 	public static class VaryImgQuality
 	{
+		/// <summary>
+		/// 对单个文件进行压缩
+		/// </summary>
+		/// <param name="path">源文件</param>
+		/// <param name="desDir">目标路径</param>
+		/// <returns></returns>
+		public static Task VaryAsync(string path, string desDir)
+		{
+			return VaryAsync(new[] { path }, desDir, 50);
+		}
+
 		/// <summary>
 		/// 对指定指定中的所有图片进行异步并行压缩 - 目标文件跟源文件在同一目录 - 按默认的压缩参数
 		/// </summary>

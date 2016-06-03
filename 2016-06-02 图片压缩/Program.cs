@@ -16,16 +16,28 @@ namespace _2016_06_02_图片压缩
 	{
 		static void Main(string[] args)
 		{
+
+
 			// 测试 390 个图片 282 M 11秒钟
 			Stopwatch sopwatch = Stopwatch.StartNew();
-			var t = VaryImgQuality.VaryAsync(Directory.GetFiles(@"C:\Users\HeabKing\Desktop\123\"), @"C:\Users\HeabKing\Desktop\456\");
-			//var t = new VaryImgQuality().VaryAsync(@"C:\Users\HeabKing\Desktop\20120812103725 - 副本 (10) - 副本.jpg50.jpg");
-			t.Wait();
+			foreach (var item in Directory.GetFiles(@"C:\Users\HeabKing\Desktop\123\"))
+			{
+				var t = VaryImgQuality.VaryAsync(new[] { item }, @"C:\Users\HeabKing\Desktop\单线程\");
+				t.Wait();
+			}
+			//var t = VaryImgQuality.VaryAsync(Directory.GetFiles(@"C:\Users\HeabKing\Desktop\123\"), @"C:\Users\HeabKing\Desktop\456\");
+			//var t = VaryImgQuality.VaryAsync(@"C:\Users\HeabKing\Desktop\ZXXKCOM20160602142011752481.jpg");
 			Console.WriteLine(sopwatch.Elapsed);
+
+			Stopwatch sopwatch2 = Stopwatch.StartNew();
+			var tt = VaryImgQuality.VaryAsync(Directory.GetFiles(@"C:\Users\HeabKing\Desktop\123\"), @"C:\Users\HeabKing\Desktop\多线程\");
+			tt.Wait();
+			Console.WriteLine(sopwatch2.Elapsed);
+
 			Console.WriteLine("Done!");
 			Console.ReadKey();
 		}
 
-		
+
 	}
 }
