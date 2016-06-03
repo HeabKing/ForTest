@@ -10,10 +10,10 @@ using System.Threading.Tasks;
 namespace Hesinx.Utility
 {
 	/// <summary>
-	/// 改变图片质量类 .jpg .jpeg .png .bmp
+	/// 改变图片质量类 .jpg(有压缩) .jpeg(有压缩) .png(没压缩) .bmp(没压缩)
 	/// </summary>
 	/// <remarks>何士雄 2016-06-02</remarks>
-	/// <example>测试 390 个图片 282 M 11秒钟</example>
+	/// <example>测试 390 个图片 282 M 10 - 20秒钟</example>
 	public static class VaryImgQuality
 	{
 		/// <summary>
@@ -117,10 +117,10 @@ namespace Hesinx.Utility
 							break;
 						case ".png":
 							format = ImageFormat.Png;
-							break;
+							break; // 在50的压缩下并没有压缩
 						case ".bmp":
 							format = ImageFormat.Bmp;
-							break;
+							break; // 在50的压缩下并没有压缩
 						default:
 							throw new Exception("不支持的文件类型");
 					}
