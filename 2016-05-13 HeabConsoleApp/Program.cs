@@ -23,7 +23,8 @@ namespace _2016_05_13_HeabConsoleApp
 	{
 		static void Main(string[] args)
 		{
-			
+			Begin("何士雄", "he394899990", "394899990@qq.com")
+			;
 		}
 
 

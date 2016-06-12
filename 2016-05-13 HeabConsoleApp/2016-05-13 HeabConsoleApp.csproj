@@ -5,7 +5,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{C0FD6D11-23DF-4D1D-9547-D826788A75BC}</ProjectGuid>
-    <OutputType>Library</OutputType>
+    <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>_2016_05_13_HeabConsoleApp</RootNamespace>
     <AssemblyName>2016-05-13 HeabConsoleApp</AssemblyName>
