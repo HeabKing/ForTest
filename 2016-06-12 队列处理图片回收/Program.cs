@@ -10,13 +10,12 @@ namespace _2016_06_12_队列处理图片回收
 {
 	class Program
 	{
-		private static readonly Queue<KeyValuePair<string, int>> Queue = new Queue<KeyValuePair<string, int>>();
 		static void Main(string[] args)
 		{
 			var files = Directory.GetFiles(@"C:\Users\HeabKing\Desktop\单线程\");
 			File.Open(files.LastOrDefault(), FileMode.Open);
-			ImgProcessQueue queue = new ImgProcessQueue();
-			var t = queue.StartAsync(new TimeSpan(0, 0, 2));
+			FileProcessQueue queue = new FileProcessQueue();
+			var t = queue.StartAsync(new TimeSpan(0, 0, 2), 4, path => { File.Delete(path); return true; });
 			foreach (var item in files)
 			{
 				queue.Add(item);
@@ -29,33 +28,58 @@ namespace _2016_06_12_队列处理图片回收
 		}
 	}
 
-	public class ImgProcessQueue
+	/// <summary>
+	/// 文件处理队列类
+	/// </summary>
+	/// <remarks>何士雄 2016-06-12</remarks>
+	public class FileProcessQueue
 	{
+		/// <summary>
+		/// 队列数据结构
+		/// </summary>
 		private readonly Queue<KeyValuePair<string, int>> _queue = new Queue<KeyValuePair<string, int>>();
-		private ILog _logger;
+		/// <summary>
+		/// 日志组件
+		/// </summary>
+		private readonly ILog _logger;
+
+		/// <summary>
+		/// 初始化日志组件
+		/// </summary>
+		public FileProcessQueue()
+		{
+			log4net.Config.XmlConfigurator.Configure(); // 通过xml注册
+			_logger = LogManager.GetLogger("testApp.Logging");
+			_logger.Info("开始处理图片...");
+		}
 
 		/// <summary>
 		/// 开始处理
 		/// </summary>
 		/// <param name="timeSpan">轮询处理的时间间隔</param>
-		/// <param name="action">可选, 对每个图片的处理, 默认为删除操作</param>
+		/// <param name="maxErrorCount">对一个文件进行的最大错误处理次数, 超过次数打上日志, 不再进行处理</param>
+		/// <param name="predicate">对每个图片进行处理, 返回false或者抛出异常都会在指定次数内进行重试处理</param>
 		/// <returns></returns>
-		public async Task StartAsync(TimeSpan timeSpan, Action<string> action = null)
+		public async Task StartAsync(TimeSpan timeSpan, int maxErrorCount, Predicate<string> predicate)
 		{
-			// 默认为删除操作
-			if (action == null)
+			// 添加到队尾的处理
+			Action<KeyValuePair<string, int>, string, string> process = (kv, warnMsg, errorMsg) =>
 			{
-				action = File.Delete;
-			}
-			if (_logger == null)
-			{
-				log4net.Config.XmlConfigurator.Configure(); // 通过xml注册
-				_logger = LogManager.GetLogger("testApp.Logging");
-				_logger.Info("开始处理图片...");
-			}
+				if (kv.Value >= maxErrorCount)   // 删除指定次数依然不行, 放弃了
+				{
+					_logger.Error(errorMsg);
+				}
+				else
+				{
+					_logger.Warn(warnMsg);
+					var newKv = new KeyValuePair<string, int>(kv.Key, kv.Value + 1);
+					_queue.Enqueue(newKv);
+				}
+			};
+
 			while (true)
 			{
-				var queuecount = _queue.Count;	// 值传递
+				var queuecount = _queue.Count;  // 值传递
 				for (int i = 0; i < queuecount; i++)
 				{
 					var kv = _queue.Dequeue();
@@ -66,29 +90,20 @@ namespace _2016_06_12_队列处理图片回收
 					}
 					try
 					{
-						action(kv.Key);
+						if (!predicate(kv.Key))
+						{
+							process(kv, $"文件处理已经尝试了{kv.Value + 1}次, 依旧失败!", $"文件处理已经失败了{kv.Value + 1}次, 已经将文件从队列中排除");
+						}
 					}
 					// 如果文件正在占用, 从新放入队列, 并计数
-					catch (System.IO.IOException e)
+					catch (Exception e/*IOException e*/)
 					{
-						int count = 100;
-						if (kv.Value > count)	// 删除指定次数依然不行, 放弃了
-						{
-							_logger.Error($"{kv.Key} 文件删除了{count}次都失败了! 有进程一直占着不放. 已经从队列中排除, 放弃删除了. {e}");
-						}
-						else
-						{
-							// 如果文件有进程占用, 将文件重新放入队尾之前先看看队列中是否已经存在同样路径的文件 - 未开发, 因为影响效率且没有必要
-
-							_logger.Warn($"{e} [已经尝试了 {kv.Value} 次!]");
-							var newKv = new KeyValuePair<string, int>(kv.Key, kv.Value + 1);
-							_queue.Enqueue(newKv);
-						}
+						process(kv, $"{e} [已经尝试了 {kv.Value + 1} 次!]", $"文件处理了{kv.Value}次都失败了! 有进程一直占着不放. 已经从队列中排除. {e}");
 					}
-					catch (Exception e)
-					{
-						_logger.Error(e);
-					}
+					//catch (Exception e)
+					//{
+					//	_logger.Error(e);
+					//}
 				}
 				await Task.Delay(timeSpan).ConfigureAwait(false);
 			}
@@ -103,6 +118,7 @@ namespace _2016_06_12_队列处理图片回收
 		{
 			if (!File.Exists(path))
 			{
+				_logger.Warn($"尝试添加文件 {path} 失败, 文件不存在.");
 				return false;
 			}
 			_queue.Enqueue(new KeyValuePair<string, int>(path, 0));
