@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.25123.0
+VisualStudioVersion = 14.0.25402.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ForTest", "ForTest\ForTest.csproj", "{98E177BC-391E-4848-9038-2B0136FB5EB4}"
 EndProject
@@ -56,6 +56,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "2016-06-02 图片压缩", "2016-06-02 图片压缩\2016-06-02 图片压缩.csproj", "{04355F6B-B90B-48C4-8823-F18CD1573EE8}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "2016-06-12 队列处理图片回收", "2016-06-12 队列处理图片回收\2016-06-12 队列处理图片回收.csproj", "{1F1F3608-E6CB-4A0D-AD47-B86A5F494957}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "2016-06-15 预览站点", "2016-06-15 预览站点\2016-06-15 预览站点.csproj", "{ECD7488A-6B23-4C0E-AB72-C36A2552FE13}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -171,6 +173,10 @@ Global
 		{1F1F3608-E6CB-4A0D-AD47-B86A5F494957}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1F1F3608-E6CB-4A0D-AD47-B86A5F494957}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1F1F3608-E6CB-4A0D-AD47-B86A5F494957}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ECD7488A-6B23-4C0E-AB72-C36A2552FE13}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ECD7488A-6B23-4C0E-AB72-C36A2552FE13}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ECD7488A-6B23-4C0E-AB72-C36A2552FE13}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ECD7488A-6B23-4C0E-AB72-C36A2552FE13}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
