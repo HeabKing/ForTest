@@ -65,6 +65,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "2016-07-05 M站评论", "20
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "2016-07-07 M站下载测试", "2016-07-07 M站下载测试\2016-07-07 M站下载测试.csproj", "{796A3673-4E7A-49C8-8BE1-B175B61C40F9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "2016-07-08 M站Cookie的Aspoo解析", "2016-07-08 M站Cookie的Aspoo解析\2016-07-08 M站Cookie的Aspoo解析.csproj", "{5C440484-A48E-46EF-99F1-393DF285588E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -195,6 +197,10 @@ Global
 		{796A3673-4E7A-49C8-8BE1-B175B61C40F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{796A3673-4E7A-49C8-8BE1-B175B61C40F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{796A3673-4E7A-49C8-8BE1-B175B61C40F9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5C440484-A48E-46EF-99F1-393DF285588E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5C440484-A48E-46EF-99F1-393DF285588E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5C440484-A48E-46EF-99F1-393DF285588E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5C440484-A48E-46EF-99F1-393DF285588E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -12,7 +12,7 @@ namespace _2016_06_12_队列处理图片回收
 	{
 		static void Main(string[] args)
 		{
-			var files = Directory.GetFiles(@"C:\Users\HeabKing\Desktop\单线程\");
+			var files = Directory.GetFiles(@"C:\Users\HeabK\Desktop\单线程\");
 			File.Open(files.LastOrDefault(), FileMode.Open);
 			FileProcessQueue queue = new FileProcessQueue();
 			var t = queue.StartAsync(new TimeSpan(0, 0, 2), 4, path => { File.Delete(path); return true; });
@@ -105,7 +105,7 @@ namespace _2016_06_12_队列处理图片回收
 					//	_logger.Error(e);
 					//}
 				}
-				await Task.Delay(timeSpan).ConfigureAwait(false);
+				await TaskEx.Delay(timeSpan).ConfigureAwait(false);
 			}
 		}
 
