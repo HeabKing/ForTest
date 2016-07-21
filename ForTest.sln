@@ -69,6 +69,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "2016-07-08 M站Cookie的Asp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "2016-07-13 正则学习", "2016-07-13 正则学习\2016-07-13 正则学习.csproj", "{AE0C4A55-C6AF-46D9-93A3-85D443820FD4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "2016-07-21 暴力麻将", "2016-07-21 暴力麻将\2016-07-21 暴力麻将.csproj", "{9027643C-E7B8-40F7-9A54-51B59735DD76}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -207,6 +209,10 @@ Global
 		{AE0C4A55-C6AF-46D9-93A3-85D443820FD4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AE0C4A55-C6AF-46D9-93A3-85D443820FD4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AE0C4A55-C6AF-46D9-93A3-85D443820FD4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9027643C-E7B8-40F7-9A54-51B59735DD76}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9027643C-E7B8-40F7-9A54-51B59735DD76}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9027643C-E7B8-40F7-9A54-51B59735DD76}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9027643C-E7B8-40F7-9A54-51B59735DD76}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
