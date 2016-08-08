@@ -74,7 +74,7 @@ namespace _2016_05_13_HeabConsoleApp
 					Accept-Language: zh-CN,zh;q=0.8,en;q=0.6
 
 					Type=LoginValidate&UserName={username}&PassWord={password}&LimitDay=0";
-
+				Console.WriteLine(requestRaw);
 				IEnumerable<string> sessionId;
 				var response = client.SendAsync(new HttpRequestMessage().CreateFromRaw(requestRaw)).Result;
 				response.EnsureSuccessStatusCode();
