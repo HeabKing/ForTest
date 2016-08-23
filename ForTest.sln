@@ -73,6 +73,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "2016-07-21 暴力麻将", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "2016-08-08 Md5", "2016-08-08 Md5\2016-08-08 Md5.csproj", "{FF655CFA-9100-4C75-AA27-DAC6C096BE19}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "2016-08-23 DotNetConsole", "2016-08-23 DotNetConsole\2016-08-23 DotNetConsole.csproj", "{AE563214-6C91-4F65-BB8F-A69A3150AA25}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -219,6 +221,10 @@ Global
 		{FF655CFA-9100-4C75-AA27-DAC6C096BE19}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FF655CFA-9100-4C75-AA27-DAC6C096BE19}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FF655CFA-9100-4C75-AA27-DAC6C096BE19}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AE563214-6C91-4F65-BB8F-A69A3150AA25}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AE563214-6C91-4F65-BB8F-A69A3150AA25}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AE563214-6C91-4F65-BB8F-A69A3150AA25}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AE563214-6C91-4F65-BB8F-A69A3150AA25}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
