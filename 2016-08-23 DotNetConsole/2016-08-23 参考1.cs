@@ -1,16 +1,13 @@
 ﻿using System;
-using System.Data;
-using System.Configuration;
 using System.CodeDom.Compiler;
-using Microsoft.CSharp;
-using System.Text;
-using System.Reflection;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net;
+using System.Reflection;
+using System.Text;
 using System.Text.RegularExpressions;
+using Microsoft.CSharp;
 
-namespace CommandDebugger
+namespace _2016_08_23_DotNetConsole
 {
 	/// <summary>
 	/// C#代码执行器，提供动态执行C#代码
@@ -136,9 +133,11 @@ namespace CommandDebugger
 			#region 初始化编译参数
 			if (_compPars == null)
 			{
-				_compPars = new CompilerParameters();
-				_compPars.GenerateExecutable = false;
-				_compPars.GenerateInMemory = true;
+				_compPars = new CompilerParameters
+				{
+					GenerateExecutable = false,
+					GenerateInMemory = true
+				};
 			}
 			//string workDir = System.Web.HttpContext.Current.Server.MapPath("~") + "Bin\\";
 			//string workDir = System.Environment.CurrentDirectory;
@@ -193,7 +192,9 @@ namespace CommandDebugger
 	}
 
 
-
+	/// <summary>
+	/// 简单版 只支持一行表达式的执行
+	/// </summary>
 	public class ProgramTest
 	{
 		static void Main(string[] args)
@@ -209,7 +210,7 @@ namespace CommandDebugger
 			string code = args.Aggregate("", (c, i) => c += i).Replace('\'', '\"') + ";";
 
 			//c# EVAL 动态 执行 代码 .net 执行 字符串 代码
-			res = CommandDebugger.Evaluator.Eval(code, out error);
+			res = Evaluator.Eval(code, out error);
 
 
 			if (!string.IsNullOrEmpty(error))
