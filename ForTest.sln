@@ -75,6 +75,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "2016-08-08 Md5", "2016-08-0
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "2016-08-23 DotNetConsole", "2016-08-23 DotNetConsole\2016-08-23 DotNetConsole.csproj", "{AE563214-6C91-4F65-BB8F-A69A3150AA25}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "2016-08-31 Topself 创建Windows服务", "2016-08-31 Topself 创建Windows服务\2016-08-31 Topself 创建Windows服务.csproj", "{6B4E5EB0-DA25-4FBC-83E0-18725EB6F532}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -225,6 +227,10 @@ Global
 		{AE563214-6C91-4F65-BB8F-A69A3150AA25}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AE563214-6C91-4F65-BB8F-A69A3150AA25}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AE563214-6C91-4F65-BB8F-A69A3150AA25}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6B4E5EB0-DA25-4FBC-83E0-18725EB6F532}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6B4E5EB0-DA25-4FBC-83E0-18725EB6F532}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6B4E5EB0-DA25-4FBC-83E0-18725EB6F532}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6B4E5EB0-DA25-4FBC-83E0-18725EB6F532}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
