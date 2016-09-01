@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Text;
@@ -13,11 +14,13 @@ namespace Aspose
 	{
 		static void Main(string[] args)
 		{
-			var target = System.IO.Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location).ConvertToHtmls(null, OfficeAndPdfConvertToHtmlExtension.ConvertModel.SingleDir);
-			Process.Start("explorer.exe", target);
-			GetAllFiles(target).ForEach(m => Process.Start("chrome.EXE", m));
-			Console.WriteLine("任意键关闭");
-			Console.ReadKey();
+
+			//args = new[] { @"C:\Users\HeabK\Source\Repos\ForTest\Aspose\bin\Debug\插值.docx" };
+			var target = args[0].ConvertToHtmls(null, OfficeAndPdfConvertToHtmlExtension.ConvertModel.SingleFile);
+			//Process.Start("explorer.exe", target);
+			//GetAllFiles(target).ForEach(m => Process.Start("chrome.EXE", m));
+			//Console.WriteLine("任意键关闭");
+			//Console.ReadKey();
 		}
 		private static List<string> GetAllFiles(string directory)
 		{

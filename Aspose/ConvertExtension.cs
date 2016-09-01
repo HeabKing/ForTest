@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -12,6 +13,7 @@ namespace Aspose
 	{
 		public enum ConvertModel
 		{
+			SingleFile,
 			SingleDir,
 			DirAndSubDir
 		}
@@ -88,26 +90,46 @@ namespace Aspose
 		/// <param name="dirDst"></param>
 		/// <param name="model">SingleDir : 转换指定目录的所有文件    DirAndSubDir : 转换指定目录以及子目录的所有文件</param>
 		/// <returns></returns>
-		public static string ConvertToHtmls(this string dirSrc, string dirDst = null, ConvertModel model = ConvertModel.SingleDir)
+		public static bool ConvertToHtmls(this string dirSrc, string dirDst = null, ConvertModel model = ConvertModel.SingleDir)
 		{
-			if (!System.IO.Directory.Exists(dirSrc))
+			if (model != ConvertModel.SingleFile && !System.IO.Directory.Exists(dirSrc))
 			{
 				throw new Exception($"指定目录 {dirSrc} 不存在");
 			}
-			var files = model == ConvertModel.SingleDir ? System.IO.Directory.GetFiles(dirSrc).ToList() : GetAllFiles(dirSrc);
+			if (model == ConvertModel.SingleFile && !System.IO.File.Exists(dirSrc))
+			{
+				throw new Exception($"指定文件 {dirSrc} 不存在");
+			}
+			IList<string> files;
+			switch(model)
+			{
+				case ConvertModel.SingleFile:
+					files = new List<string> {dirSrc};
+					break;
+				case ConvertModel.SingleDir:
+					files = System.IO.Directory.GetFiles(dirSrc).ToList();
+					break;
+				case ConvertModel.DirAndSubDir:
+					files = GetAllFiles(dirSrc);
+					break;
+				default:
+					throw new ArgumentOutOfRangeException(nameof(model), model, null);
+			}
+
 			Parallel.ForEach(files, file =>
 			{
 				try
 				{
 					dirDst = file.ConvertToHtml();
-					Console.WriteLine($"info: 转换 {file} 成功!");
+					Debug.WriteLine($"info: 转换 {file} 成功!");
 				}
 				catch (Exception ex)
 				{
-					Console.WriteLine("warning: " + file + ex.Message);
+					Debug.WriteLine("warning: " + file + ex.Message);
+					throw;
 				}
 			});
-			return model == ConvertModel.SingleDir ? System.IO.Path.GetDirectoryName(dirDst) : dirSrc;
+			return true;
 		}
 
 		/// <summary>
