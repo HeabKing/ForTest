@@ -11,6 +11,7 @@
     <link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
     <script src="~/lib/jquery/dist/jquery.js"></script>
     <script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
 </head>
 <body>
 <div>
@@ -18,15 +19,8 @@
         姓名: <input type="text" asp-for="Name" />
         <span asp-validation-for="Name"></span>
         <br />
-        <input type="button" value="验证" id="validateEle" />
+        <input type="submit" value="验证" id="validateEle" />
     </form>
 </div>
-<script>
-    $(function() {
-        $("#formEle").on("click", function() {
-            $.validator();
-        });
-    });
-</script>
 </body>
 </html>
