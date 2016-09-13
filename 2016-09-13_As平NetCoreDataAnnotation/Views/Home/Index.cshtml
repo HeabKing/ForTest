@@ -1,0 +1,32 @@
+﻿@{
+    Layout = null;
+}
+
+@using System.Threading.Tasks
+@model _2016_09_13_As平NetCoreDataAnnotation.Model.StudentViewModel
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AspNetCore注解</title>
+    <link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+</head>
+<body>
+<div>
+    <form id="formEle" method="post" class="text-center">
+        姓名: <input type="text" asp-for="Name" />
+        <span asp-validation-for="Name"></span>
+        <br />
+        <input type="button" value="验证" id="validateEle" />
+    </form>
+</div>
+<script>
+    $(function() {
+        $("#formEle").on("click", function() {
+            $.validator();
+        });
+    });
+</script>
+</body>
+</html>
