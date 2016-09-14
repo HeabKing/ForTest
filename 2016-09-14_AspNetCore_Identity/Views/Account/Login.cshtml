@@ -1,0 +1,19 @@
+﻿@using System.Threading.Tasks
+@model _2016_09_14_AspNetCore_Identity.Model.LoginViewModel
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Login</title>
+</head>
+<body>
+<form asp-action="Login" method="post">
+	<label asp-for="UserName"></label>:
+	<input asp-for="UserName" />
+	<span asp-validation-for="UserName"></span><br />
+	<label asp-for="Password"></label>:
+	<input asp-for="Password" />
+	<span asp-validation-for="Password"></span><br />
+	<input type="submit" />
+</form>
+</body>
+</html>

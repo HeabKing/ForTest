@@ -1,0 +1,34 @@
+﻿@using System.Threading.Tasks
+@model _2016_09_14_AspNetCore_Identity.Model.AccountViewModels.RegisterViewModel
+
+@{
+	Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+	<title>title</title>
+</head>
+<body>
+<div>
+	<form asp-action="Register">
+		<label asp-for="UserName"></label>:
+		<input asp-for="UserName" />
+		<span asp-validation-for="UserName"></span><br />
+		<label asp-for="Password"></label>:
+		<input asp-for="Password" />
+		<span asp-validation-for="Password"></span><br />
+		<label asp-for="ComfirmPwd"></label>:
+		<input asp-for="ComfirmPwd" />
+		<span asp-validation-for="ComfirmPwd"></span><br />
+		<input type="submit" />
+	</form>
+</div>
+	<script src="~/lib/jquery/dist/jquery.js"></script>
+	<script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+	<script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+
+</body>
+</html>
