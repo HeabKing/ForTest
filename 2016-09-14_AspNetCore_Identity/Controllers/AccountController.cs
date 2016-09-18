@@ -14,10 +14,13 @@ namespace _2016_09_14_AspNetCore_Identity.Controllers
 	public class AccountController : Controller
 	{
 		private static readonly IList<User> Accounts = new List<User>();
-
+		private static readonly string CookieAuthenticationScheme = "MyCookieMiddlewareInstance";
 		public IActionResult Index()
 		{
-			ViewBag.UserName = "游客";
+			var userName = HttpContext.Authentication.GetAuthenticateInfoAsync(CookieAuthenticationScheme)
+				.Result.Principal.Claims.FirstOrDefault(m=> m.Type== "UserName")?
+				.Value ?? "游客";
+			ViewBag.UserName = userName;
 			return View();
 		}
 
@@ -25,13 +28,14 @@ namespace _2016_09_14_AspNetCore_Identity.Controllers
 		{
 			if (ModelState.IsValid)
 			{
-				Accounts.Add(new Controllers.User
+				var user = new Controllers.User
 				{
 					Id = Accounts.Count > 0 ? Accounts.Max(m => m.Id) + 1 : 0,
 					UserName = vm.UserName,
 					Password = vm.Password
-				});
-				await HttpContext.Authentication.SignInAsync("MyCookieMiddlewareInstance", User);   // TODO ClaimsPrincipal 实例的创建
+				};
+				Accounts.Add(user);
+				await HttpContext.Authentication.SignInAsync(CookieAuthenticationScheme, CreateClaimsPrincipalAsync(user));   // TODO 总结 ClaimsPrincipal 实例的创建
 				return Redirect("/Account/Index");
 			}
 			return View();
@@ -52,6 +56,17 @@ namespace _2016_09_14_AspNetCore_Identity.Controllers
 		{
 			await HttpContext.Authentication.SignOutAsync("MyCookieMiddlewareInstance");
 			return Content("ok");
+		}
+
+		private ClaimsPrincipal CreateClaimsPrincipalAsync(User user)
+		{
+			if (user == null)
+			{
+				throw new ArgumentNullException(nameof(user));
+			}
+			ClaimsIdentity id = new ClaimsIdentity();
+			id.AddClaim(new Claim(nameof(user.UserName), user.UserName, "just a string"));
+			return new ClaimsPrincipal(id);
 		}
 	}
 
