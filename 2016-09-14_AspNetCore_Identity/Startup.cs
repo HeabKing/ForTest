@@ -38,10 +38,17 @@ namespace _2016_09_14_AspNetCore_Identity
             services.AddApplicationInsightsTelemetry(Configuration);
 
             services.AddMvc();
-        }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
+			// 添加策略
+			services.AddAuthorization(options =>
+			{
+				options.AddPolicy("LoginOnly",
+							 policy => policy.RequireClaim("UserName"));
+			});
+		}
+
+		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+		public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
@@ -65,7 +72,7 @@ namespace _2016_09_14_AspNetCore_Identity
 			app.UseCookieAuthentication(new CookieAuthenticationOptions
 			{
 				AuthenticationScheme = "MyCookieMiddlewareInstance",    // this scheme name
-				LoginPath = new PathString("/Account/Unauthorized/"),   // if has not been authenticated, redirect to login path
+				LoginPath = new PathString("/Account/Register/"),   // if has not been authenticated, redirect to login path
 																		// PathString: provides correct escoping path
 				AccessDeniedPath = new PathString("/Account/Forbidden/"),   // if user attmpt to access but does not pass the authorization policies
 				AutomaticAuthenticate = true,   // true: middleware run on every request and attempt to validate and reconstruct any serialized principal it created
@@ -77,6 +84,7 @@ namespace _2016_09_14_AspNetCore_Identity
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
+
 		}
     }
 }

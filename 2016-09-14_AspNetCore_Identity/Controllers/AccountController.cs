@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using _2016_09_14_AspNetCore_Identity.Model;
 using _2016_09_14_AspNetCore_Identity.Model.AccountViewModels;
@@ -15,6 +16,7 @@ namespace _2016_09_14_AspNetCore_Identity.Controllers
 	{
 		private static readonly IList<User> Accounts = new List<User>();
 		private static readonly string CookieAuthenticationScheme = "MyCookieMiddlewareInstance";
+		[Authorize(Policy = "LoginOnly")]
 		public IActionResult Index()
 		{
 			var userName = HttpContext.Authentication.GetAuthenticateInfoAsync(CookieAuthenticationScheme)
@@ -24,7 +26,7 @@ namespace _2016_09_14_AspNetCore_Identity.Controllers
 			return View();
 		}
 
-		public async Task<IActionResult> Register(RegisterViewModel vm)
+		public async Task<IActionResult> Register(RegisterViewModel vm, string returnUrl = "/Account/Index")
 		{
 			if (ModelState.IsValid)
 			{
@@ -36,7 +38,7 @@ namespace _2016_09_14_AspNetCore_Identity.Controllers
 				};
 				Accounts.Add(user);
 				await HttpContext.Authentication.SignInAsync(CookieAuthenticationScheme, CreateClaimsPrincipalAsync(user));   // TODO 总结 ClaimsPrincipal 实例的创建
-				return Redirect("/Account/Index");
+				return Redirect(returnUrl);
 			}
 			return View();
 		}
