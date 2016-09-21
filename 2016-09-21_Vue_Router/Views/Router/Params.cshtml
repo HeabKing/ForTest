@@ -1,0 +1,26 @@
+﻿@{
+    Layout = null;
+}
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script src="~/lib/vue/dist/vue.js"></script>
+    <script src="~/lib/vue-router/dist/vue-router.js"></script>
+</head>
+<body id="app">
+    <!-- 路由外链 -->
+    <router-view></router-view>
+<script>
+    var router = new VueRouter();
+    router.map({
+        '/:id': {
+            component: {
+                template: '<h1>Id: {{$route.params.id}}</h1>'
+            }
+        }
+    });
+    router.start({}, "#app");
+</script>
+</body>
+</html>
