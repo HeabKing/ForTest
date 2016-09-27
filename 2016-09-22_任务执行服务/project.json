@@ -1,0 +1,18 @@
+{
+  "version": "1.0.0-*",
+  "buildOptions": {
+    "emitEntryPoint": true
+  },
+
+  "dependencies": {
+    "HtmlAgilityPack": "1.4.9.5",
+    "Sinx.Utility": "0.0.1.27",
+    "System.Net.Http": "4.1.0",
+    "System.Xml.XmlDocument": "4.0.0",
+    "Topshelf": "4.0.2"
+  },
+
+  "frameworks": {
+    "net461": {}
+  }
+}
