@@ -91,6 +91,10 @@ Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "2016-09-27_System.Linq.IGro
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "2016-09-28 System.Linq.Grouping", "2016-09-28 System.Linq.Grouping\2016-09-28 System.Linq.Grouping.csproj", "{5971A260-CE21-4D9D-AE85-FE6019DD2931}"
 EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "2016-11-10_Zxxk", "2016-11-10_Zxxk\2016-11-10_Zxxk.xproj", "{5BDF8C41-CB71-40B6-9EC6-F850B528D78B}"
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "2016-11-25_Zxxk.Wxt.Dal", "2016-11-25_Zxxk.Wxt.Dal\2016-11-25_Zxxk.Wxt.Dal.xproj", "{C039E9A0-7504-4815-8448-D2FF41370426}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -273,6 +277,14 @@ Global
 		{5971A260-CE21-4D9D-AE85-FE6019DD2931}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5971A260-CE21-4D9D-AE85-FE6019DD2931}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5971A260-CE21-4D9D-AE85-FE6019DD2931}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5BDF8C41-CB71-40B6-9EC6-F850B528D78B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5BDF8C41-CB71-40B6-9EC6-F850B528D78B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5BDF8C41-CB71-40B6-9EC6-F850B528D78B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5BDF8C41-CB71-40B6-9EC6-F850B528D78B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C039E9A0-7504-4815-8448-D2FF41370426}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C039E9A0-7504-4815-8448-D2FF41370426}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C039E9A0-7504-4815-8448-D2FF41370426}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C039E9A0-7504-4815-8448-D2FF41370426}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

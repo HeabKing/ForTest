@@ -1,0 +1,22 @@
+﻿{
+	"version": "1.0.0-*",
+	"testRunner": "xunit",
+	"dependencies": {
+		"xunit": "2.2.0-beta2-build3300",
+		"dotnet-test-xunit": "2.2.0-preview2-build1029",
+		"Sinx.Utility": "0.0.1.32"
+	},
+	"frameworks": {
+		"netcoreapp1.0": {
+			"dependencies": {
+				"Microsoft.NETCore.App": {
+					"type": "platform",
+					"version": "1.0.0"
+				}
+			}
+		}
+		//"net451": { // 最低net451, 如果net45会无法引用dotnet-test-xunit, 这里有两个框架, 但是控制台是xUnit自动运行的, 这就意味着选用那个框架是xUnit来的, 所以, 如果有两个框架还是分建两个单元测试项目吧
+		//    "dependencies": {}
+		//}
+	}
+}
