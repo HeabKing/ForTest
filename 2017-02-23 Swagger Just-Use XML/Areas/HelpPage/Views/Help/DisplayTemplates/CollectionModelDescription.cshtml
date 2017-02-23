@@ -1,0 +1,6 @@
+@using _2017_02_23_Swagger_Just_Use_XML.Areas.HelpPage.ModelDescriptions
+@model CollectionModelDescription
+@if (Model.ElementDescription is ComplexTypeModelDescription)
+{
+    @Html.DisplayFor(m => m.ElementDescription)
+}
