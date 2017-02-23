@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="8664299d258944848494fb255f8ebdfc" Name="Diagram1">
+        <EntityTypeShape EntityType="ZxxkModel.Admin_WeekLog" Width="1.5" PointX="7.75" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZxxkModel.Area_Province" Width="1.5" PointX="0.75" PointY="12.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZxxkModel.B_Appraise" Width="1.5" PointX="0.75" PointY="15.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZxxkModel.B_AppraiseReply" Width="1.5" PointX="0.75" PointY="20.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZxxkModel.B_RecordType" Width="1.5" PointX="20.75" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZxxkModel.BJ_EliteCon" Width="1.5" PointX="5.75" PointY="22.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZxxkModel.CID_Ana" Width="1.5" PointX="22" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZxxkModel.CID_AnaType" Width="1.5" PointX="19.75" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZxxkModel.CID_ApprovalFlow" Width="1.5" PointX="12.75" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZxxkModel.CID_ApprovalStep" Width="1.5" PointX="15" PointY="9.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZxxkModel.CID_BackType" Width="1.5" PointX="8" PointY="15.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZxxkModel.CID_CollectType" Width="1.5" PointX="3.75" PointY="12.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZxxkModel.CID_ExamType" Width="1.5" PointX="0.75" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZxxkModel.CID_FeatureType" Width="1.5" PointX="7.75" PointY="22.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZxxkModel.CID_FlowStepOper" Width="1.5" PointX="9.75" PointY="22.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZxxkModel.CID_FlowStepRule" Width="1.5" PointX="14.75" PointY="22.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZxxkModel.CID_Group" Width="1.5" PointX="15.75" PointY="2.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZxxkModel.CID_GroupPaperType" Width="1.5" PointX="16.75" PointY="22.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZxxkModel.CID_Operator" Width="1.5" PointX="15" PointY="12.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZxxkModel.CID_SchoolType" Width="1.5" PointX="18.75" PointY="22.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZxxkModel.CID_ScoreType" Width="1.5" PointX="8" PointY="18.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZxxkModel.CID_SoftContentManage" Width="1.5" PointX="10.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZxxkModel.CID_SoftDataManage" Width="1.5" PointX="2.75" PointY="2.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZxxkModel.CID_UserIdentity" Width="1.5" PointX="17.75" PointY="13.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZxxkModel.Cl_Admin" Width="1.5" PointX="20.75" PointY="22.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZxxkModel.Cl_Announce" Width="1.5" PointX="2.75" PointY="23.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZxxkModel.Cl_ApprovalInfo" Width="1.5" PointX="5.75" PointY="11.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZxxkModel.Cl_ApprovalOperInfo" Width="1.5" PointX="8" PointY="11.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZxxkModel.Cl_Article" Width="1.5" PointX="11.75" PointY="23.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZxxkModel.Cl_ArticleHitsLog" Width="1.5" PointX="22.75" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZxxkModel.Cl_ArticleInnerLink" Width="1.5" PointX="22.75" PointY="12.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZxxkModel.Cl_ArticleRecycleBin" Width="1.5" PointX="22.75" PointY="16.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZxxkModel.Cl_ArticleUnPass" Width="1.5" PointX="22.75" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZxxkModel.Cl_BackInfo" Width="1.5" PointX="10.25" PointY="11.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZxxkModel.Cl_BankrollItem" Width="1.5" PointX="7.75" PointY="25.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZxxkModel.Cl_BigExamCollect" Width="1.5" PointX="8.25" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZxxkModel.Cl_BigExamCollectOpinion" Width="1.5" PointX="3" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZxxkModel.Cl_Channel" Width="1.5" PointX="16.75" PointY="25.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZxxkModel.Cl_ChannelVersion" Width="1.5" PointX="24.75" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZxxkModel.Cl_ChargeLog" Width="1.5" PointX="24.75" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZxxkModel.Cl_Class" Width="1.5" PointX="24.75" PointY="10.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZxxkModel.Cl_Collect" Width="1.5" PointX="3.75" PointY="14.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZxxkModel.Cl_CollectOpinion" Width="1.5" PointX="0.75" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZxxkModel.Cl_CollectOpinionFile" Width="1.5" PointX="3" PointY="9.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZxxkModel.Cl_CollectOpinionRewardLog" Width="1.5" PointX="13.75" PointY="26.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZxxkModel.Cl_CollectRewordStatics" Width="1.5" PointX="24.75" PointY="21.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZxxkModel.Cl_CollectUserMoods" Width="1.5" PointX="24.75" PointY="25.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZxxkModel.Cl_Comment" Width="1.5" PointX="0.75" PointY="27.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZxxkModel.Cl_CommentV2" Width="1.5" PointX="2.75" PointY="27.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZxxkModel.Cl_DeliverItem" Width="1.5" PointX="4.75" PointY="27.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZxxkModel.Cl_DeliverType" Width="1.5" PointX="26.75" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZxxkModel.Cl_Diary" Width="1.5" PointX="26.75" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZxxkModel.Cl_DiaryComment" Width="1.5" PointX="26.75" PointY="11.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZxxkModel.Cl_DiaryCommentReply" Width="1.5" PointX="26.75" PointY="15.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZxxkModel.Cl_DiaryPhrase" Width="1.5" PointX="26.75" PointY="19.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZxxkModel.Cl_Discuss" Width="1.5" PointX="26.75" PointY="22.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZxxkModel.Cl_DiscussLabel" Width="1.5" PointX="22.75" PointY="28.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZxxkModel.Cl_DiscussPraise" Width="1.5" PointX="24.75" PointY="28.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZxxkModel.Cl_DiscussReply" Width="1.5" PointX="26.75" PointY="27.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZxxkModel.Cl_Favorite" Width="1.5" PointX="28.75" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZxxkModel.Cl_GroupPapers" Width="1.5" PointX="28.75" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZxxkModel.Cl_Guest" Width="1.5" PointX="6.75" PointY="30.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZxxkModel.Cl_GuestNew" Width="1.5" PointX="8.75" PointY="30.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZxxkModel.Cl_GuestReply" Width="1.5" PointX="28.75" PointY="15.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZxxkModel.Cl_ImgUpdate" Width="1.5" PointX="28.75" PointY="20.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZxxkModel.Cl_IndexSoft" Width="1.5" PointX="28.75" PointY="23.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZxxkModel.Cl_Inform" Width="1.5" PointX="13.75" PointY="31.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZxxkModel.Cl_Js" Width="1.5" PointX="22.75" PointY="31.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZxxkModel.Cl_JsSort" Width="1.5" PointX="24.75" PointY="31.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZxxkModel.Cl_Keyword" Width="1.5" PointX="30.75" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZxxkModel.Cl_Label" Width="1.5" PointX="0.75" PointY="32.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZxxkModel.Cl_LabelSort" Width="1.5" PointX="2.75" PointY="32.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZxxkModel.Cl_LookRecord" Width="1.5" PointX="30.75" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZxxkModel.Cl_MainVersion" Width="1.5" PointX="30.75" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZxxkModel.Cl_Movie" Width="1.5" PointX="30.75" PointY="11.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZxxkModel.Cl_Order" Width="1.5" PointX="18.75" PointY="32.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZxxkModel.Cl_OrderItem" Width="1.5" PointX="30.75" PointY="23.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZxxkModel.Cl_Page" Width="1.5" PointX="30.75" PointY="27.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZxxkModel.Cl_PageItem" Width="1.5" PointX="30.75" PointY="31.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZxxkModel.Cl_PassIP" Width="1.5" PointX="15.75" PointY="33.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZxxkModel.Cl_Payment" Width="1.5" PointX="32.75" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZxxkModel.Cl_Photo" Width="1.5" PointX="32.75" PointY="9.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZxxkModel.Cl_PrivateAna" Width="1.5" PointX="10.75" PointY="34.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZxxkModel.Cl_Product" Width="1.5" PointX="32.75" PointY="20.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZxxkModel.Cl_ProductRecycleBin" Width="1.5" PointX="24.75" PointY="34.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZxxkModel.Cl_QuickPayCard" Width="1.5" PointX="30.75" PointY="34.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZxxkModel.Cl_RelationChapter" Width="1.5" PointX="32.75" PointY="33.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZxxkModel.Cl_RelationNode" Width="1.5" PointX="0.75" PointY="35.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZxxkModel.Cl_Role" Width="1.5" PointX="10.75" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZxxkModel.Cl_ScoreInfo" Width="1.5" PointX="10.25" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZxxkModel.Cl_SearchXmlData" Width="1.5" PointX="2.75" PointY="35.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZxxkModel.Cl_Server" Width="1.5" PointX="20.75" PointY="35.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZxxkModel.Cl_ServerItem" Width="1.5" PointX="34.75" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZxxkModel.Cl_Setup" Width="1.5" PointX="34.75" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZxxkModel.Cl_Soft" Width="1.5" PointX="4.75" PointY="36.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZxxkModel.Cl_SoftApproval" Width="1.5" PointX="6.75" PointY="36.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZxxkModel.Cl_SoftRecycleBin" Width="1.5" PointX="34.75" PointY="10.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZxxkModel.Cl_SoftUnPass" Width="1.5" PointX="12.75" PointY="36.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZxxkModel.Cl_SoftVideoPlayCount" Width="1.5" PointX="34.75" PointY="26.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZxxkModel.Cl_SouGouSearchDataXml" Width="1.5" PointX="34.75" PointY="30.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZxxkModel.Cl_Special" Width="1.5" PointX="34.75" PointY="34.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZxxkModel.Cl_SystemAction" Width="1.5" PointX="8.75" PointY="37.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZxxkModel.Cl_Tag" Width="1.5" PointX="20" PointY="17.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZxxkModel.Cl_TagCategory" Width="1.5" PointX="17.75" PointY="17.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZxxkModel.Cl_TeacherAuth" Width="1.5" PointX="12.75" PointY="16.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZxxkModel.Cl_TeacherCard" Width="1.5" PointX="36.75" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZxxkModel.Cl_TeacherCensorLog" Width="1.5" PointX="36.75" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZxxkModel.Cl_UpFileLog" Width="1.5" PointX="36.75" PointY="9.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZxxkModel.Cl_UserCz" Width="1.5" PointX="36.75" PointY="13.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZxxkModel.Cl_UserGroup" Width="1.5" PointX="14.75" PointY="38.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZxxkModel.Cl_UserGroupLog" Width="1.5" PointX="36.75" PointY="18.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZxxkModel.Cl_UserSoftRAP" Width="1.5" PointX="36.75" PointY="22.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZxxkModel.Cl_VideoStatistic" Width="1.5" PointX="36.75" PointY="26.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZxxkModel.Cl_Vote" Width="1.5" PointX="26.75" PointY="38.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZxxkModel.ClD_Grade" Width="1.5" PointX="36.75" PointY="30.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZxxkModel.ClD_SoftCate" Width="1.5" PointX="28.75" PointY="38.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZxxkModel.ClD_SoftType" Width="1.5" PointX="30.75" PointY="38.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZxxkModel.ClD_TeacherRole" Width="1.5" PointX="36.75" PointY="33.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZxxkModel.ClD_Version" Width="1.5" PointX="36.75" PointY="36.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZxxkModel.CZ_Article" Width="1.5" PointX="0.75" PointY="39.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZxxkModel.CZ_ArticleRecycleBin" Width="1.5" PointX="10.75" PointY="39.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZxxkModel.CZ_ArticleUnPass" Width="1.5" PointX="16.75" PointY="39.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZxxkModel.CZ_Soft" Width="1.5" PointX="18.75" PointY="39.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZxxkModel.CZ_SoftRecycleBin" Width="1.5" PointX="20.75" PointY="39.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZxxkModel.CZ_SoftUnPass" Width="1.5" PointX="32.75" PointY="39.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZxxkModel.dtproperties" Width="1.5" PointX="34.75" PointY="39.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZxxkModel.GK_Subject" Width="1.5" PointX="36.75" PointY="39.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZxxkModel.GK_SubjectArea" Width="1.5" PointX="38.75" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZxxkModel.GZ_Article" Width="1.5" PointX="38.75" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZxxkModel.GZ_ArticleRecycleBin" Width="1.5" PointX="6.75" PointY="40.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZxxkModel.GZ_ArticleUnPass" Width="1.5" PointX="38.75" PointY="15.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZxxkModel.GZ_Soft" Width="1.5" PointX="38.75" PointY="18.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZxxkModel.GZ_SoftRecycleBin" Width="1.5" PointX="38.75" PointY="31.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZxxkModel.GZ_SoftUnPass" Width="1.5" PointX="28.75" PointY="41.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZxxkModel.HD_Raffle" Width="1.5" PointX="40.75" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZxxkModel.HD_RaffleLog" Width="1.5" PointX="40.75" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZxxkModel.LuceneTrigger_Soft_ForCMS" Width="1.5" PointX="40.75" PointY="9.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZxxkModel.M_Index" Width="1.5" PointX="40.75" PointY="14.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZxxkModel.MGTrigger_Article" Width="1.5" PointX="40.75" PointY="17.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZxxkModel.MGTrigger_ArticleForMNS" Width="1.5" PointX="40.75" PointY="20.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZxxkModel.MGTrigger_ArticleRecycleBinForMNS" Width="1.5" PointX="40.75" PointY="23.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZxxkModel.MGTrigger_FeatureForMNS" Width="1.5" PointX="40.75" PointY="26.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZxxkModel.MGTrigger_SoftForMNS" Width="1.5" PointX="40.75" PointY="29.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZxxkModel.MGTrigger_SoftRecycleBinForMNS" Width="1.5" PointX="40.75" PointY="32.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZxxkModel.MST_Class" Width="1.5" PointX="30.75" PointY="42.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZxxkModel.MST_RClassArticle" Width="1.5" PointX="40.75" PointY="35.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZxxkModel.MST_RClassSoft" Width="1.5" PointX="40.75" PointY="38.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZxxkModel.MST_TeacherClass" Width="1.5" PointX="40.75" PointY="41.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZxxkModel.oa_Categories" Width="1.5" PointX="12.75" PointY="43.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZxxkModel.oa_Events" Width="1.5" PointX="14.75" PointY="43.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZxxkModel.oa_postings" Width="1.5" PointX="32.75" PointY="43.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZxxkModel.R_ApprovalStepOperator" Width="1.5" PointX="17.25" PointY="9.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZxxkModel.R_ArticleTag" Width="1.5" PointX="34.75" PointY="43.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZxxkModel.R_CollectRelation" Width="1.5" PointX="6" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZxxkModel.R_FeatureExtension" Width="1.5" PointX="42.75" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZxxkModel.R_FeatureSoft" Width="1.5" PointX="42.75" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZxxkModel.R_GroupPaperSoft" Width="1.5" PointX="42.75" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZxxkModel.R_IdentityTemplate" Width="1.5" PointX="20" PointY="13.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZxxkModel.R_RoleAssignByTeacherAuth_TB" Width="1.5" PointX="15" PointY="16.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZxxkModel.R_RoleAttentionByTeacherAuth_TB" Width="1.5" PointX="15" PointY="19.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZxxkModel.R_RoleFlow" Width="1.5" PointX="42.75" PointY="11.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZxxkModel.R_RoleSoftContentManage" Width="1.5" PointX="13" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZxxkModel.R_SoftClass" Width="1.5" PointX="42.75" PointY="14.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZxxkModel.R_UserChannel" Width="1.5" PointX="17.75" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZxxkModel.R_UserChannelClass" Width="1.5" PointX="20" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZxxkModel.R_UserGroup" Width="1.5" PointX="18" PointY="3.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZxxkModel.R_UserRole" Width="1.5" PointX="13" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZxxkModel.R_UserSoftDataManage" Width="1.5" PointX="5" PointY="2.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZxxkModel.School_Payment" Width="1.5" PointX="42.75" PointY="18.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZxxkModel.sysdiagrams" Width="1.5" PointX="42.75" PointY="25.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZxxkModel.XK_BaoMing" Width="1.5" PointX="42.75" PointY="28.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZxxkModel.XK_BookPayment" Width="1.5" PointX="26.75" PointY="44.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZxxkModel.XK_CDBuy" Width="1.5" PointX="42.75" PointY="34.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZxxkModel.XK_Chapter" Width="1.5" PointX="36.75" PointY="44.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZxxkModel.XK_Count" Width="1.5" PointX="42.75" PointY="39.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZxxkModel.XK_Favorite" Width="1.5" PointX="38.75" PointY="44.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZxxkModel.XK_Feature" Width="1.5" PointX="42.75" PointY="42.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZxxkModel.XK_FeatureSort" Width="1.5" PointX="28.75" PointY="45.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZxxkModel.XK_Node" Width="1.5" PointX="44.75" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZxxkModel.XK_Proposal" Width="1.5" PointX="44.75" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZxxkModel.XK_Question" Width="1.5" PointX="44.75" PointY="10.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZxxkModel.XK_QuestionSort" Width="1.5" PointX="44.75" PointY="15.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZxxkModel.XK_RMBincomePayLog" Width="1.5" PointX="44.75" PointY="18.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZxxkModel.XK_RMBincomePayUser" Width="1.5" PointX="44.75" PointY="24.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZxxkModel.XK_Subject" Width="1.5" PointX="44.75" PointY="29.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZxxkModel.XK_SzxPayment" Width="1.5" PointX="44.75" PointY="32.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZxxkModel.XK_Template" Width="1.5" PointX="44.75" PointY="36.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZxxkModel.XK_WeekStar" Width="1.5" PointX="44.75" PointY="40.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZxxkModel.XK_Whole" Width="1.5" PointX="44.75" PointY="43.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZxxkModel.XK_WholeSort" Width="1.5" PointX="44.75" PointY="46.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZxxkModel.XX_Article" Width="1.5" PointX="12.75" PointY="47.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZxxkModel.XX_ArticleRecycleBin" Width="1.5" PointX="14.75" PointY="47.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZxxkModel.XX_ArticleUnPass" Width="1.5" PointX="22.75" PointY="47.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZxxkModel.XX_Soft" Width="1.5" PointX="30.75" PointY="47.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZxxkModel.XX_SoftRecycleBin" Width="1.5" PointX="32.75" PointY="47.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZxxkModel.XX_SoftUnPass" Width="1.5" PointX="46.75" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZxxkModel.XY_Payment" Width="1.5" PointX="46.75" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZxxkModel.ZK_Paper" Width="1.5" PointX="46.75" PointY="11.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZxxkModel.ZK_PaperArea" Width="1.5" PointX="46.75" PointY="15.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZxxkModel.ZK_PaperYear" Width="1.5" PointX="46.75" PointY="18.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZxxkModel.ZZ_DEL_XK_School_Del" Width="1.5" PointX="46.75" PointY="20.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZxxkModel.ZZ_DEL_XK_SchoolArea_Del" Width="1.5" PointX="46.75" PointY="26.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZxxkModel.ZZ_DEL_XK_Version" Width="1.5" PointX="46.75" PointY="30.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZxxkModel.A_VersionGather" Width="1.5" PointX="46.75" PointY="33.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZxxkModel.Cl_Article_20170213" Width="1.5" PointX="34.75" PointY="48.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZxxkModel.Cl_Class_20170213" Width="1.5" PointX="46.75" PointY="38.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZxxkModel.Cl_EditUser" Width="1.5" PointX="36.75" PointY="48.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZxxkModel.Cl_Researcher" Width="1.5" PointX="38.75" PointY="48.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZxxkModel.Cl_ResearcherSoftHits" Width="1.5" PointX="0.75" PointY="49.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZxxkModel.Cl_Users" Width="1.5" PointX="8.75" PointY="49.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZxxkModel.ClD_SoftRelation" Width="1.5" PointX="44.75" PointY="49.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZxxkModel.M_Article_Bak_Sync" Width="1.5" PointX="46.75" PointY="49.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZxxkModel.R_FeatureSoft_bak_20160926" Width="1.5" PointX="48.75" PointY="2.125" IsExpanded="true" />
+        <AssociationConnector Association="ZxxkModel.CID_Ana_AnaTypeID_CID_AnaType_AnaTypeID" ManuallyRouted="false" />
+        <AssociationConnector Association="ZxxkModel.CID_ApprovalStep_FlowID_CID_ApprovalFlow_FlowID" ManuallyRouted="false" />
+        <AssociationConnector Association="ZxxkModel.R_ApprovalStepOperator_StepID_CID_ApprovalStep_StepID" ManuallyRouted="false" />
+        <AssociationConnector Association="ZxxkModel.Cl_BackInfo_BackTypeID_CID_BackType_BackTypeID" ManuallyRouted="false" />
+        <AssociationConnector Association="ZxxkModel.R_CollectRelation_CollectTypeID_CID_CollectType_CollectTypeID" ManuallyRouted="false" />
+        <AssociationConnector Association="ZxxkModel.Cl_BigExamCollectOpinion_ExamTypeID_CID_ExamType_ExamTypeID" ManuallyRouted="false" />
+        <AssociationConnector Association="ZxxkModel.R_UserGroup_GroupID_CID_Group_GroupID" ManuallyRouted="false" />
+        <AssociationConnector Association="ZxxkModel.R_ApprovalStepOperator_OperID_CID_Operator_OperID" ManuallyRouted="false" />
+        <AssociationConnector Association="ZxxkModel.Cl_ScoreInfo_ScoreTypeID_CID_ScoreType_ScoreTypeID" ManuallyRouted="false" />
+        <AssociationConnector Association="ZxxkModel.R_RoleSoftContentManage_ContentID_CID_SoftContentManage_ContentID" ManuallyRouted="false" />
+        <AssociationConnector Association="ZxxkModel.R_UserSoftDataManage_DataID_CID_SoftDataManage_DataID" ManuallyRouted="false" />
+        <AssociationConnector Association="ZxxkModel.R_IdentityTemplate_IdentityIDCID_UserIdentity_IdentityID" ManuallyRouted="false" />
+        <AssociationConnector Association="ZxxkModel.Cl_ApprovalOperInfo_ApprovalID_Cl_ApprovalInfo_ApprovalID" ManuallyRouted="false" />
+        <AssociationConnector Association="ZxxkModel.Cl_BackInfo_AppInfoOperID_Cl_ApprovalOperInfo_AppInfoOperID" ManuallyRouted="false" />
+        <AssociationConnector Association="ZxxkModel.Cl_ScoreInfo_AppInfoOperID_Cl_ApprovalOperInfo_AppInfoOperID" ManuallyRouted="false" />
+        <AssociationConnector Association="ZxxkModel.Cl_BigExamCollect_CollectRelationID_R_CollectRelation_CollectRelationID" ManuallyRouted="false" />
+        <AssociationConnector Association="ZxxkModel.Cl_BigExamCollectOpinion_CollectOpinionID_Cl_CollectOpinion_CollectOpinionID" ManuallyRouted="false" />
+        <AssociationConnector Association="ZxxkModel.R_CollectRelation_CollectID_Cl_Collect_SoftID" ManuallyRouted="false" />
+        <AssociationConnector Association="ZxxkModel.Cl_CollectInfoFile_CollectOpinionID_Cl_CollectOpinion_CollectOpinionID" ManuallyRouted="false" />
+        <AssociationConnector Association="ZxxkModel.R_CollectRelation_CollectOpinionID_Cl_CollectOpinion_CollectOpinionID" ManuallyRouted="false" />
+        <AssociationConnector Association="ZxxkModel.R_RoleSoftContentManage_RoleID_Cl_Role_RoleID" ManuallyRouted="false" />
+        <AssociationConnector Association="ZxxkModel.R_UserRole_RoleID_Cl_Role_RoleID" ManuallyRouted="false" />
+        <AssociationConnector Association="ZxxkModel.Cl_Tag_TagCategoryID_Cl_TagCategory_TagCategoryID" ManuallyRouted="false" />
+        <AssociationConnector Association="ZxxkModel.FK_R_RoleAssignByTeacherAuth_TB_TeacherAuthID_Cl_TeacherAuth_TeacherAuthID" ManuallyRouted="false" />
+        <AssociationConnector Association="ZxxkModel.FK_R_RoleAttentionByTeacherAuth_TB_TeacherAuthID_Cl_TeacherAuth_TeacherAuthID" ManuallyRouted="false" />
+        <AssociationConnector Association="ZxxkModel.R_UserChannelClass_UserChannelID_R_UserChannel_UserChannelID" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
